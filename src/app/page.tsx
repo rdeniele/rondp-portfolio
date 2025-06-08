@@ -207,19 +207,9 @@ export default function Home() {
         <footer className="fixed bottom-0 left-0 right-0 z-50 backdrop-blur-md bg-black/20 border-t border-white/10">
           <div className="max-w-7xl mx-auto px-8">
             <div className="flex items-center justify-between h-16">
-              <div className="text-white">
-                <a href="mailto:work.rparagoso@gmail.com" className="hover:text-indigo-400 transition-colors">
-                  work.rparagoso@gmail.com
-                </a>
-              </div>
-              <div className="text-white">
-                <a href="tel:+639159427791" className="hover:text-indigo-400 transition-colors">
-                  +639159427791
-                </a>
-              </div>
-            </div>
-            <div className="text-center text-white/60 text-sm pb-2">
-              © {new Date().getFullYear()} Ron Paragoso. All rights reserved.
+              <a href="mailto:work.rparagoso@gmail.com" className="text-white hover:text-indigo-400 transition-colors">work.rparagoso@gmail.com</a>
+              <span className="text-white/60">© {new Date().getFullYear()} Ron Paragoso. All rights reserved.</span>
+              <a href="tel:+639159427791" className="text-white hover:text-indigo-400 transition-colors">+639159427791</a>
             </div>
           </div>
         </footer>
