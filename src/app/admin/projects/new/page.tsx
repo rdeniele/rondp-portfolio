@@ -69,7 +69,7 @@ export default function NewProject() {
             alert('Error creating project. Please try again.');
         } finally {
             setLoading(false);
-        }
+            }
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -149,16 +149,16 @@ export default function NewProject() {
                     />
                     {imagePreview && (
                         <div className="mt-2">
-                            <Image
+                        <Image 
                                 src={imagePreview}
-                                alt="Preview"
-                                width={200}
-                                height={200}
+                            alt="Preview" 
+                            width={200} 
+                            height={200} 
                                 className="object-cover rounded"
-                            />
-                        </div>
-                    )}
-                </div>
+                        />
+                    </div>
+                )}
+                    </div>
 
                 <div className="flex space-x-4">
                     <button
@@ -166,8 +166,8 @@ export default function NewProject() {
                         disabled={loading}
                         className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:opacity-50"
                     >
-                        {loading ? 'Creating...' : 'Create Project'}
-                    </button>
+                    {loading ? 'Creating...' : 'Create Project'}
+                </button>
                     <button
                         type="button"
                         onClick={() => router.push('/admin')}

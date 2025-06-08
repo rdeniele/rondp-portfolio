@@ -106,7 +106,7 @@ export default function AdminDashboard() {
     return <div>Loading...</div>
   }
 
-  return (
+    return (
     <div className="p-8">
       <div className="flex justify-between items-center mb-8">
         <h1 className="text-2xl font-bold">Admin Dashboard</h1>
@@ -126,7 +126,7 @@ export default function AdminDashboard() {
         >
           Add New Project
         </button>
-      </div>
+        </div>
 
       <div className="grid gap-4">
         {projects.map((project) => (

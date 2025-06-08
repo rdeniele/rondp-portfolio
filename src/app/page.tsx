@@ -58,7 +58,7 @@ export default function Home() {
     }
   };
 
-  return (
+    return (
     <main className="min-h-screen flex flex-col relative bg-black">
       {/* Three.js Background */}
       <div className="fixed inset-0 w-full h-full z-0">
@@ -163,7 +163,7 @@ export default function Home() {
                         />
                       </div>
                     ))}
-                  </div>
+            </div>
                 </div>
               ))}
             </div>
@@ -179,8 +179,8 @@ export default function Home() {
                   }`}
                 />
               ))}
+                </div>
             </div>
-          </div>
         </div>
       </div>
     </main>

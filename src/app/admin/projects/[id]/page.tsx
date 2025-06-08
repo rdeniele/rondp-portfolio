@@ -13,7 +13,13 @@ interface Project {
     image_url: string;
 }
 
-export default function EditProjectPage({ params }: { params: { id: string } }) {
+interface PageProps {
+    params: {
+        id: string
+    }
+}
+
+export default function EditProjectPage({ params }: PageProps) {
     const router = useRouter();
     const { id } = params;
     const [project, setProject] = useState<Project | null>(null);
