@@ -85,7 +85,7 @@ export default function Home() {
 
         <div className="p-8 max-w-7xl mx-auto w-full flex gap-4">
           <a
-            href="https://github.com/rdeniele?tab=repositories"
+            href="https://github.com/rdeniele"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center px-6 py-3 border border-white/20 rounded-lg shadow-sm text-sm font-medium text-white backdrop-blur-md bg-white/10 hover:bg-white/20 hover:border-white/30 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
