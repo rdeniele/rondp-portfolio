@@ -1,10 +1,10 @@
 import EditProjectForm from './EditProjectForm';
 
-type Props = {
-  params: { id: string }
-  searchParams: { [key: string]: string | string[] | undefined }
-}
-
-export default function Page({ params }: Props) {
+export default function Page({
+  params,
+}: {
+  params: { id: string };
+  searchParams?: { [key: string]: string | string[] | undefined };
+}) {
   return <EditProjectForm id={params.id} />;
 }
