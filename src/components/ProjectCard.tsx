@@ -1,6 +1,7 @@
-import React from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import ProjectModal from './ProjectModal';
 
 interface ProjectCardProps {
     title: string;
@@ -9,29 +10,53 @@ interface ProjectCardProps {
     image_url: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, description, project_url, image_url }) => {
-    return (
-        <Link 
-            href={project_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="block overflow-hidden backdrop-blur-md bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30 transition-all duration-300 rounded-lg group"
-        >
-            <div className="relative h-48 overflow-hidden">
-                <Image 
-                    src={image_url}
-                    alt={title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-            <div className="p-6 transform transition-all duration-300 group-hover:translate-y-[-4px]">
-                <h2 className="text-xl font-bold mb-2 text-white group-hover:text-blue-400 transition-colors duration-300">{title}</h2>
-                <p className="text-gray-300 line-clamp-2 group-hover:text-gray-200 transition-colors duration-300">{description}</p>
-            </div>
-        </Link>
-    );
-};
+export default function ProjectCard({
+    title,
+    description,
+    project_url,
+    image_url,
+}: ProjectCardProps) {
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-export default ProjectCard;
+    return (
+        <>
+            <div className="group relative overflow-hidden rounded-lg bg-white/5 backdrop-blur-sm transition-all duration-300 hover:bg-white/10">
+                <Link 
+                    href={project_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                >
+                    <div className="relative aspect-video w-full overflow-hidden">
+                        <Image 
+                            src={image_url}
+                            alt={title}
+                            fill
+                            className="object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                    </div>
+                    <div className="p-4">
+                        <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
+                        <p className="text-gray-300 text-sm line-clamp-2">{description}</p>
+                    </div>
+                </Link>
+                <div className="px-4 pb-4">
+                    <button
+                        onClick={() => setIsModalOpen(true)}
+                        className="text-sm text-blue-400 hover:text-blue-300 transition-colors duration-200"
+                    >
+                        View details
+                    </button>
+                </div>
+            </div>
+
+            <ProjectModal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                title={title}
+                description={description}
+                image_url={image_url}
+            />
+        </>
+    );
+}
