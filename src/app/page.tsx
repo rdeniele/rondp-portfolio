@@ -93,7 +93,7 @@ export default function Home() {
                 Ron Paragoso
               </h2>
               <p className="text-xl md:text-2xl text-gray-300 max-w-3xl">
-                Software engineer from the Philippines with knowledge in Next.js, ASP.NET, Laravel, TypeScript, and applied machine learning.
+                Philippines and US-based Software engineer with knowledge in Next.js, ASP.NET, Laravel, TypeScript, and applied machine learning.
               </p>
 
               {/* Social Media Links */}
