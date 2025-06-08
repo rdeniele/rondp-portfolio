@@ -28,12 +28,12 @@ export default function ProjectCard({
                     className="block"
                 >
                     <div className="relative aspect-video w-full overflow-hidden">
-                        <Image 
+                    <Image 
                             src={image_url}
-                            alt={title}
+                    alt={title}
                             fill
                             className="object-cover transition-transform duration-300 group-hover:scale-105"
-                        />
+                    />
                     </div>
                     <div className="p-4">
                         <h3 className="text-lg font-semibold text-white mb-2">{title}</h3>
