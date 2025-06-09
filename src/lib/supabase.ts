@@ -1,4 +1,4 @@
-// import supabase client
+// Import the Supabase client
 import { createClient } from '@supabase/supabase-js'
 
 // if supabase url and key is not processed, throw an error

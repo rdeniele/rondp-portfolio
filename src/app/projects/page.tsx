@@ -1,9 +1,11 @@
-"use client";
+"use client"; // Enables client-side rendering in Next.js 13+ for this component
 
+// Import React hooks and modules
 import React, { useEffect, useState } from 'react';
-import { supabase } from '@/lib/supabase';
-import ProjectCard from '@/components/ProjectCard';
+import { supabase } from '@/lib/supabase'; // Supabase client for database access
+import ProjectCard from '@/components/ProjectCard'; // Reusable UI component for displaying a project
 
+// Define the structure of a Project object
 interface Project {
     id: number;
     title: string;
@@ -12,15 +14,22 @@ interface Project {
     image_url: string;
 }
 
+
+// Functional component for displaying all projects
 const ProjectsPage = () => {
+    // React state to store the list of projects
     const [projects, setProjects] = useState<Project[]>([]);
 
+    // useEffect runs when the component mounts (empty dependency array)
+    // Used here to fetch data from Supabase
     useEffect(() => {
         const fetchProjects = async () => {
+            // Fetch all rows from the 'projects' table
             const { data, error } = await supabase
                 .from('projects')
                 .select('*');
 
+            // Handle errors or update state with the retrieved data
             if (error) {
                 console.error('Error fetching projects:', error);
             } else {

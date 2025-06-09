@@ -3,11 +3,11 @@ import { Fragment } from 'react';
 import Image from 'next/image';
 
 interface ProjectModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  title: string;
-  description: string;
-  image_url: string;
+  isOpen: boolean;           // Controls if the modal is visible
+  onClose: () => void;       // Function to close the modal
+  title: string;             // Project title
+  description: string;       // Project description
+  image_url: string;         // Image URL for the project
 }
 
 export default function ProjectModal({
@@ -19,7 +19,9 @@ export default function ProjectModal({
 }: ProjectModalProps) {
   return (
     <Transition appear show={isOpen} as={Fragment}>
+      {/* The Dialog component provides accessible modal semantics */}
       <Dialog as="div" className="relative z-50" onClose={onClose}>
+        {/* Background overlay with fade-in/out animation */}
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -29,11 +31,14 @@ export default function ProjectModal({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
+          {/* Semi-transparent dark background with blur */}
           <div className="fixed inset-0 bg-black/70 backdrop-blur-sm" />
         </Transition.Child>
 
+        {/* Container that centers the modal content */}
         <div className="fixed inset-0 overflow-y-auto">
           <div className="flex min-h-full items-center justify-center p-4">
+            {/* Modal panel with scale and opacity animation */}
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -43,7 +48,9 @@ export default function ProjectModal({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
+              {/* Modal content box */}
               <Dialog.Panel className="w-full max-w-2xl transform overflow-hidden rounded-2xl bg-white/10 backdrop-blur-md p-6 shadow-xl transition-all">
+                {/* Project image */}
                 <div className="relative aspect-video w-full overflow-hidden rounded-lg mb-4">
                   <Image
                     src={image_url}
@@ -52,15 +59,21 @@ export default function ProjectModal({
                     className="object-cover"
                   />
                 </div>
+
+                {/* Project title */}
                 <Dialog.Title
                   as="h3"
                   className="text-2xl font-bold leading-6 text-white mb-2"
                 >
                   {title}
                 </Dialog.Title>
+
+                {/* Project description */}
                 <div className="mt-2">
                   <p className="text-gray-300">{description}</p>
                 </div>
+
+                {/* Close button */}
                 <div className="mt-4">
                   <button
                     type="button"
@@ -77,4 +90,4 @@ export default function ProjectModal({
       </Dialog>
     </Transition>
   );
-} 
+}

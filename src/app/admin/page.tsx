@@ -1,9 +1,11 @@
-'use client'
+'use client' // Marks this file as a Client Component in Next.js
 
+// Import necessary hooks and modules: useEffect, useState from React, Supabase client, and useRouter from Next.js
 import { useEffect, useState } from 'react'
 import { supabase } from '@/lib/supabase'
 import { useRouter } from 'next/navigation'
 
+// Define the TypeScript interface for a Project object
 interface Project {
   id: number
   title: string
@@ -13,24 +15,33 @@ interface Project {
   created_at: string
 }
 
+// this is where we create a export method AdminDashboard
 export default function AdminDashboard() {
-  const [projects, setProjects] = useState<Project[]>([])
-  const [loading, setLoading] = useState(true)
-  const [deleteLoading, setDeleteLoading] = useState<number | null>(null)
+
+  // Define state variables
+  const [projects, setProjects] = useState<Project[]>([])// List of projects
+  const [loading, setLoading] = useState(true)  // Loading state for initial fetch
+  const [deleteLoading, setDeleteLoading] = useState<number | null>(null) // ID of the project being deleted
   const router = useRouter()
 
+  // useEffect runs on component mount to check auth session
   useEffect(() => {
     const checkAuth = async () => {
       const { data: { session } } = await supabase.auth.getSession()
+
+      // If there's no active session, redirect to login
       if (!session) {
         router.push('/admin/login')
         return
       }
+      // If session exists, fetch project data
       fetchProjects()
     }
     checkAuth()
   }, [router])
 
+  //now we fetch projects from Supabase
+  // Select all records from 'projects' table and sort them by creation date (descending)
   const fetchProjects = async () => {
     try {
       const { data, error } = await supabase
@@ -47,7 +58,9 @@ export default function AdminDashboard() {
     }
   }
 
+  // Handle deleting a project and its image
   const handleDelete = async (projectId: number) => {
+    // return nothing if user did not confirm deletion of project
     if (!confirm('Are you sure you want to delete this project? This action cannot be undone.')) {
       return
     }
@@ -97,6 +110,7 @@ export default function AdminDashboard() {
     }
   }
 
+  // Handle user logout
   const handleLogout = async () => {
     await supabase.auth.signOut()
     router.push('/admin/login')
@@ -105,7 +119,7 @@ export default function AdminDashboard() {
   if (loading) {
     return <div>Loading...</div>
   }
-
+    // Render the admin dashboard
     return (
     <div className="p-8">
       <div className="flex justify-between items-center mb-8">
