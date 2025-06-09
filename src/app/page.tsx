@@ -5,6 +5,7 @@ import { supabase } from '@/lib/supabase'
 import ProjectCard from '@/components/ProjectCard'
 import { Canvas } from '@react-three/fiber'
 import { GalaxyBackground } from '@/components/GalaxyBackground'
+import TypewriterText from '@/components/TypewriterText';
 
 interface Project {
   id: number
@@ -87,9 +88,14 @@ export default function Home() {
         <section id="home" className="h-screen flex items-center justify-center snap-start">
           <div className="max-w-7xl mx-auto w-full px-4 sm:px-8">
             <div className="space-y-6 sm:space-y-8">
+
+              
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 bg-clip-text text-transparent leading-tight">
-                Transforming innovative ideas into scalable software systems
+                <TypewriterText 
+                text="Transforming innovative ideas into scalable software systems"
+                className="inline-block"/>
               </h1>
+
               <h2 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-white">
                 Ron Paragoso
               </h2>
