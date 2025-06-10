@@ -1,0 +1,642 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes shine {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animateFloat {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animateGradient {
+  background-size: 200% 200%;
+  animation: gradient 8s ease infinite;
+}
+
+.animateFadeIn {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.animateSlideUp {
+  animation: slideUp 1s ease-out forwards;
+}
+
+.animatePulse {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+/* Navigation animations */
+.navLink {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.navLink::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background: linear-gradient(to right, #6366f1, #a855f7, #ec4899);
+  transition: width 0.3s ease;
+}
+
+.navLink:hover::after {
+  width: 100%;
+}
+
+/* Background animation */
+.animatedBackground {
+  position: relative;
+  overflow: hidden;
+}
+
+.animatedBackground::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(99, 102, 241, 0.1), transparent 70%);
+  animation: pulse 8s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Project card hover animation */
+.projectCardHover:hover .transitionTransform {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Contact section animation */
+.contactSection .backdropBlur {
+  animation: pulse 4s ease-in-out infinite;
+}
+
+/* Footer animation */
+.footer {
+  animation: slideUp 1s ease-out forwards;
+}
+
+/* Enhanced snap scrolling */
+.snapContainer {
+  height: 100vh;
+  overflow-y: auto;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+  position: relative;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  background: transparent;
+}
+
+.snapContainer::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.snapSection {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 2rem 0;
+  background: transparent;
+}
+
+/* Fix main container layout */
+.mainContainer {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+  background: transparent;
+}
+
+/* Fix content layout */
+.contentContainer {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+}
+
+/* Fix navigation layout */
+.navContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Fix footer layout */
+.footerContainer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  backdrop-filter: blur(8px);
+  background: rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Background container */
+.backgroundContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  background: black;
+}
+
+/* Scroll progress indicator */
+.scrollProgress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, #6366f1, #a855f7, #ec4899);
+  transform-origin: 0%;
+  z-index: 100;
+}
+
+/* Scroll indicator dots */
+.scrollDots {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 50;
+}
+
+.scrollDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.scrollDot.active {
+  background: #6366f1;
+  transform: scale(1.5);
+}
+
+.scrollDot:hover {
+  background: #a855f7;
+  transform: scale(1.2);
+}
+
+/* Section transitions */
+.sectionTransition {
+  transition: all 0.5s ease-out;
+  opacity: 0.5;
+  transform: scale(0.95);
+}
+
+.sectionTransition.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Scroll-based animations */
+.fadeInOnScroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.fadeInOnScroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Enhanced shining light animation for buttons */
+.socialButton {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: linear-gradient(
+    90deg,
+    rgba(99, 102, 241, 0.2),  /* indigo-500 */
+    rgba(168, 85, 247, 0.2),  /* purple-500 */
+    rgba(236, 72, 153, 0.2)   /* pink-500 */
+  );
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+.socialButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(99, 102, 241, 0.2),  /* indigo-500 */
+    rgba(168, 85, 247, 0.2),  /* purple-500 */
+    rgba(236, 72, 153, 0.2),  /* pink-500 */
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shine 12s infinite linear;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.socialButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+}
+
+.socialButton:hover::before {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(99, 102, 241, 0.3),  /* indigo-500 */
+    rgba(168, 85, 247, 0.3),  /* purple-500 */
+    rgba(236, 72, 153, 0.3),  /* pink-500 */
+    transparent
+  );
+}
+
+.socialButton span {
+  position: relative;
+  z-index: 1;
+}
+
+.socialButton svg {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.socialButton:hover svg {
+  transform: scale(1.1) rotate(5deg);
+}
+
+/* Shining heading effect */
+.shiningHeading {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    90deg,
+    #6366f1,  /* indigo-500 */
+    #a855f7,  /* purple-500 */
+    #ec4899   /* pink-500 */
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.shiningHeading::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(99, 102, 241, 0.2),  /* indigo-500 */
+    rgba(168, 85, 247, 0.2),  /* purple-500 */
+    rgba(236, 72, 153, 0.2),  /* pink-500 */
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: shine 12s infinite linear;
+  pointer-events: none;
+  mix-blend-mode: overlay;
+}
+
+.projectCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  height: 400px; /* Fixed height for consistency */
+  display: flex;
+  flex-direction: column;
+}
+
+.projectCard:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.projectImage {
+  position: relative;
+  width: 100%;
+  height: 200px; /* Fixed height for images */
+  overflow: hidden;
+}
+
+.projectImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.projectContent {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.projectTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.projectDescription {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* Limit to 3 lines */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.projectTechnologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.technologyTag {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.viewDetailsButton {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 0.75rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.projectCard:hover .viewDetailsButton {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Carousel specific styles */
+.carouselContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 0 4rem;
+}
+
+.carouselTrack {
+  display: flex;
+  transition: transform 0.5s ease;
+  gap: 2rem;
+  padding: 1rem;
+  transform: translateX(0);
+  will-change: transform;
+}
+
+.carouselItem {
+  flex: 0 0 350px;
+  opacity: 0.5;
+  transform: scale(0.9);
+  transition: all 0.5s ease;
+  filter: blur(2px);
+  margin: 0 auto;
+}
+
+.carouselItem.active {
+  opacity: 1;
+  transform: scale(1);
+  filter: blur(0);
+}
+
+.carouselNavigation {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+  z-index: 10;
+  padding: 0 1rem;
+}
+
+.carouselButton {
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+  padding: 1rem;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  backdrop-filter: blur(4px);
+}
+
+.carouselButton:hover {
+  background: rgba(0, 0, 0, 0.6);
+  transform: scale(1.1);
+  border-color: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.carouselDots {
+  position: absolute;
+  bottom: -2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.carouselDot {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.carouselDot:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: scale(1.2);
+}
+
+.carouselDot.active {
+  background: rgba(255, 255, 255, 0.8);
+  transform: scale(1.2);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+/* Contact section styles */
+.contactForm {
+  background: rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.contactInput {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.contactInput:focus {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  outline: none;
+}
+
+.contactTextarea {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  min-height: 150px;
+  transition: all 0.3s ease;
+}
+
+.contactTextarea:focus {
+  background: rgba(255, 255, 255, 0.3);
+  border-color: rgba(255, 255, 255, 0.5);
+  outline: none;
+}
+
+.contactButton {
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.contactButton:hover {
+  background: rgba(255, 255, 255, 0.4);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-2px);
+} 
