@@ -64,8 +64,8 @@ export default function ProjectCard({
                 onClose={() => setIsModalOpen(false)}
                 title={title}
                 description={description}
-                image_url={image_url}
-            />
+                image_url={image_url} 
+                project_url={project_url}            />
         </>
     );
 }

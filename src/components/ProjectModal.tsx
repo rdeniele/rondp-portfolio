@@ -7,6 +7,7 @@ interface ProjectModalProps {
   onClose: () => void;       // Function to close the modal
   title: string;             // Project title
   description: string;       // Project description
+  project_url: string;       // Project description
   image_url: string;         // Image URL for the project
 }
 
@@ -15,6 +16,7 @@ export default function ProjectModal({
   onClose,
   title,
   description,
+  project_url,
   image_url,
 }: ProjectModalProps) {
   return (
@@ -75,13 +77,23 @@ export default function ProjectModal({
 
                 {/* Close button */}
                 <div className="mt-4">
-                  <button
-                    type="button"
-                    className="inline-flex justify-center rounded-md border border-transparent bg-blue-500 px-4 py-2 text-sm font-medium text-white hover:bg-blue-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                    onClick={onClose}
-                  >
-                    Close
-                  </button>
+                    <div className="flex gap-2">
+                    <a
+                      href={project_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex justify-center rounded-md border border-transparent bg-white px-4 py-2 text-sm font-medium text-black hover:bg-fuchsia-700 hover:text-amber-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2"
+                    >
+                      Visit Project
+                    </a>
+                    <button
+                      type="button"
+                      className="inline-flex justify-center rounded-md border border-transparent bg-black px-4 py-2 text-sm font-medium text-white hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      onClick={onClose}
+                    >
+                      Close
+                    </button>
+                    </div>
                 </div>
               </Dialog.Panel>
             </Transition.Child>

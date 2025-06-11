@@ -337,8 +337,7 @@ export default function Home() {
             onClose={() => setSelectedProject(null)}
             title={selectedProject.title}
             description={selectedProject.description}
-            image_url={selectedProject.image_url}
-          />
+            image_url={selectedProject.image_url} project_url={selectedProject.project_url}          />
         )}
 
         {/* Contact Section */}
