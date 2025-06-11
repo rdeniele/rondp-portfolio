@@ -54,14 +54,18 @@ export function GalaxyBackground() {
   });
 
   return (
-    <Points ref={ref} positions={positions} stride={3} frustumCulled={false}>
-      <PointMaterial
-        transparent
-        color="#ffffff"         // Color of each point (white)
-        size={0.02}             // Size of each point
-        sizeAttenuation={true} // Makes points appear smaller farther away
-        depthWrite={false}     // Prevents point flickering
-      />
-    </Points>
+    <>
+      <color attach="background" args={['#000000']} />
+      <Points ref={ref} positions={positions} stride={3} frustumCulled={false}>
+        <PointMaterial
+          transparent
+          color="#ffffff"         // Color of each point (white)
+          size={0.02}             // Increased size of each point
+          sizeAttenuation={true} // Makes points appear smaller farther away
+          depthWrite={false}     // Prevents point flickering
+          opacity={1.0}          // Increased opacity
+        />
+      </Points>
+    </>
   );
 }

@@ -141,13 +141,14 @@
   scroll-snap-type: y mandatory;
   scroll-behavior: smooth;
   position: relative;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   background: transparent;
+  z-index: 20;
 }
 
 .snapContainer::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
 }
 
 .snapSection {
@@ -161,6 +162,7 @@
   position: relative;
   padding: 2rem 0;
   background: transparent;
+  z-index: 20;
 }
 
 /* Fix main container layout */
@@ -175,7 +177,7 @@
 /* Fix content layout */
 .contentContainer {
   position: relative;
-  z-index: 10;
+  z-index: 20;
   width: 100%;
   height: 100%;
   background: transparent;
@@ -213,7 +215,7 @@
   right: 0;
   bottom: 0;
   z-index: 0;
-  background: black;
+  background: transparent;
 }
 
 /* Scroll progress indicator */
@@ -262,8 +264,8 @@
 /* Section transitions */
 .sectionTransition {
   transition: all 0.5s ease-out;
-  opacity: 0.5;
-  transform: scale(0.95);
+  opacity: 1;
+  transform: scale(1);
 }
 
 .sectionTransition.active {
@@ -388,24 +390,44 @@
   mix-blend-mode: overlay;
 }
 
+/* Projects section specific styles */
+#projects {
+  position: relative;
+  background: rgba(0, 0, 0, 0.1); /* Much more transparent */
+  z-index: 20;
+}
+
+#projects::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1); /* Much more transparent */
+  z-index: -1;
+}
+
 .projectCard {
   position: relative;
   overflow: hidden;
   border-radius: 1rem;
-  background: rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
   transition: all 0.3s ease;
-  height: 400px; /* Fixed height for consistency */
+  height: 400px;
   display: flex;
   flex-direction: column;
+  z-index: 30;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .projectCard:hover {
   transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.4);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(0, 0, 0, 0.85);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+  border-color: rgba(255, 255, 255, 0.8);
 }
 
 .projectImage {
@@ -435,17 +457,19 @@
   font-weight: 600;
   color: white;
   margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .projectDescription {
-  color: rgba(255, 255, 255, 0.8);
+  color: white;
   font-size: 0.875rem;
   line-height: 1.5;
   margin-bottom: 1rem;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* Limit to 3 lines */
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .projectTechnologies {
@@ -456,12 +480,13 @@
 }
 
 .technologyTag {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.15);
   color: white;
   padding: 0.25rem 0.75rem;
   border-radius: 1rem;
   font-size: 0.75rem;
   border: 1px solid rgba(255, 255, 255, 0.3);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .viewDetailsButton {
@@ -492,6 +517,10 @@
   width: 100%;
   overflow: hidden;
   padding: 0 4rem;
+  z-index: 30;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .carouselTrack {
@@ -501,14 +530,15 @@
   padding: 1rem;
   transform: translateX(0);
   will-change: transform;
+  z-index: 30;
 }
 
 .carouselItem {
   flex: 0 0 350px;
-  opacity: 0.5;
-  transform: scale(0.9);
+  opacity: 1;
+  transform: scale(0.95);
   transition: all 0.5s ease;
-  filter: blur(2px);
+  filter: blur(0);
   margin: 0 auto;
 }
 
@@ -639,4 +669,22 @@
   background: rgba(255, 255, 255, 0.4);
   border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-2px);
-} 
+}
+
+/* Contact section specific styles */
+#contact {
+  position: relative;
+  background: rgba(0, 0, 0, 0.1); /* Much more transparent */
+  z-index: 20;
+}
+
+#contact::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1); /* Much more transparent */
+  z-index: -1;
+}
