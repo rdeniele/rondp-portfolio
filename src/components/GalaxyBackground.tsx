@@ -12,7 +12,7 @@ export function GalaxyBackground() {
   const mousePosition = useMousePosition();
 
   // Total number of points (stars) to render
-  const count = 500;
+  const count = 350;
 
   // State to track animation time for color changes
   const [time, setTime] = useState(0);
