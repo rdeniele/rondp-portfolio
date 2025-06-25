@@ -12,7 +12,7 @@ export function GalaxyBackground() {
   const mousePosition = useMousePosition();
 
   // Total number of points (stars) to render
-  const count = 1500;
+  const count = 250;
 
   /**
    * Generate positions for all the stars once using useMemo.
