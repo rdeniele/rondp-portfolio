@@ -57,13 +57,24 @@ export default function NewProject() {
         setLoading(true);
 
         try {
+            // Get the current number of projects to assign the next order
+            const { count } = await supabase
+                .from('projects')
+                .select('*', { count: 'exact', head: true });
+
+            // Create the project data, only include order if the field exists
+            const projectData = {
+                ...formData,
+                ...(count !== null && { order: count })
+            };
+
             const { error } = await supabase
                 .from('projects')
-                .insert([formData]);
+                .insert([projectData]);
 
             if (error) throw error;
 
-            router.push('/admin');
+            router.push('/admin/projects');
         } catch (error) {
             console.error('Error creating project:', error);
             alert('Error creating project. Please try again.');

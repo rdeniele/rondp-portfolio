@@ -18,13 +18,14 @@ interface Project {
   image_url: string
   created_at: string
   technologies: string[]
+  order?: number
 }
 
 async function getProjects(): Promise<Project[]> {
   const { data, error } = await supabase
     .from('projects')
     .select('*')
-    .order('created_at', { ascending: true })
+    .order('order', { ascending: true })
 
   if (error) {
     console.error('Error fetching projects:', error)

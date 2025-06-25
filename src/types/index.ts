@@ -8,6 +8,7 @@ export interface Project {
     url: string;               // URL or link to the live project or repository
     createdAt: string;         // Timestamp when the project was created
     updatedAt: string;         // Timestamp when the project was last updated
+    order?: number;            // Order for displaying projects (optional for backward compatibility)
 }
 
 // This interface represents the structure of a user object

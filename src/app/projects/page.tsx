@@ -12,6 +12,7 @@ interface Project {
     description: string;
     project_url: string;
     image_url: string;
+    order?: number;
 }
 
 
@@ -24,16 +25,25 @@ const ProjectsPage = () => {
     // Used here to fetch data from Supabase
     useEffect(() => {
         const fetchProjects = async () => {
-            // Fetch all rows from the 'projects' table
-            const { data, error } = await supabase
-                .from('projects')
-                .select('*');
+            try {
+                // Fetch projects ordered by the order field
+                const { data, error } = await supabase
+                    .from('projects')
+                    .select('*')
+                    .order('order', { ascending: true });
 
-            // Handle errors or update state with the retrieved data
-            if (error) {
-                console.error('Error fetching projects:', error);
-            } else {
-                setProjects(data);
+                if (error) {
+                    console.error('Error fetching projects:', error);
+                    return;
+                }
+
+                if (data && data.length > 0) {
+                    setProjects(data);
+                } else {
+                    setProjects([]);
+                }
+            } catch (err) {
+                console.error('Unexpected error fetching projects:', err);
             }
         };
 

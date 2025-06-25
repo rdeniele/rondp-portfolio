@@ -7,12 +7,13 @@ import { supabase } from '@/lib/supabase';
  * Handles GET requests to fetch all projects from the database.
  */
 export async function GET() {
-    // Query all rows from the "projects" table
+    // Query all rows from the "projects" table, ordered by the order field
     const { data, error } = await supabase
         .from('projects')
-        .select('*');
+        .select('*')
+        .order('order', { ascending: true });
 
-    // If there’s an error, return it with a 500 Internal Server Error status
+    // If there's an error, return it with a 500 Internal Server Error status
     if (error) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
@@ -35,7 +36,7 @@ export async function POST(request: Request) {
         .from('projects')
         .insert([{ title, description, link }]);
 
-    // If there’s an error, return it with a 500 status
+    // If there's an error, return it with a 500 status
     if (error) {
         return NextResponse.json({ error: error.message }, { status: 500 });
     }
