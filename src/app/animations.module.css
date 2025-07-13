@@ -171,7 +171,7 @@
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-  background: transparent;
+  background: #09090f; /* fallback dark background */
 }
 
 /* Fix content layout */
@@ -215,7 +215,7 @@
   right: 0;
   bottom: 0;
   z-index: 0;
-  background: transparent;
+  background: #09090f; /* fallback dark background */
 }
 
 /* Scroll progress indicator */
