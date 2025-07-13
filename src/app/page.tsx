@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState, useRef } from 'react';
-import { supabase } from '@/lib/supabase'
 import { Canvas } from '@react-three/fiber'
 import { GalaxyBackground } from '@/components/GalaxyBackground'
 import TypewriterText from '@/components/TypewriterText';
@@ -9,6 +8,7 @@ import styles from './animations.module.css'
 import { FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa'
 import Image from 'next/image'
 import ProjectModal from '@/components/ProjectModal'
+import { projects } from '@/data/projects'
 
 interface Project {
   id: number
@@ -21,36 +21,13 @@ interface Project {
   order?: number
 }
 
-async function getProjects(): Promise<Project[]> {
-  const { data, error } = await supabase
-    .from('projects')
-    .select('*')
-    .order('order', { ascending: true })
-
-  if (error) {
-    console.error('Error fetching projects:', error)
-    return []
-  }
-
-  return data || []
-}
-
 export default function Home() {
-  const [projects, setProjects] = useState<Project[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [activeSection, setActiveSection] = useState('home');
   const [scrollProgress, setScrollProgress] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      const data = await getProjects();
-      setProjects(data);
-    };
-    fetchProjects();
-  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
