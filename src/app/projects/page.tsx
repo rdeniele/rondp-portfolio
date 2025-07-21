@@ -55,6 +55,24 @@ const ProjectsPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 text-white">
+      {/* Back to Home - Top Left */}
+      <div className="absolute top-8 left-8 z-20">
+        <Link
+          href="/"
+          className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg hover:bg-white/20 transition-all duration-300 overflow-hidden transition-transform hover:scale-105"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          <svg 
+            className="relative z-10 w-5 h-5 text-white transform transition-transform duration-300 group-hover:-translate-x-1" 
+            fill="none" 
+            stroke="currentColor" 
+            viewBox="0 0 24 24"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 12H5m7 7l-7-7 7-7" />
+          </svg>
+          <span className="relative z-10 text-white font-medium">Back to Home</span>
+        </Link>
+      </div>
       {/* Header */}
       <div className="relative w-full h-72">
         <div className="absolute inset-0 bg-gray-800" />
@@ -76,7 +94,7 @@ const ProjectsPage = () => {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-3 rounded-lg border font-medium transition-colors ${
+              className={`px-6 py-3 rounded-lg border font-medium transition-colors transition-transform hover:scale-105 ${
                 selectedCategory === category
                   ? 'border-gray-600 bg-gray-800 text-white'
                   : 'border-gray-700 bg-gray-800 text-gray-200 hover:border-gray-600'
@@ -92,7 +110,7 @@ const ProjectsPage = () => {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 transition-all duration-300 hover:border-gray-600 hover:shadow-lg"
+              className="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 transition-all duration-300 hover:border-gray-600 hover:shadow-lg transition-transform hover:scale-105"
             >
               <div className="relative h-48">
                 <Image
@@ -128,37 +146,18 @@ const ProjectsPage = () => {
           ))}
         </div>
 
-        {/* Back to Home */}
-        <div className="mt-12 text-center">
-          <Link
-            href="/"
-            className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg hover:bg-white/20 transition-all duration-300 overflow-hidden"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <svg 
-              className="relative z-10 w-5 h-5 text-white transform transition-transform duration-300 group-hover:-translate-x-1" 
-              fill="none" 
-              stroke="currentColor" 
-              viewBox="0 0 24 24"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 12H5m7 7l-7-7 7-7" />
-            </svg>
-            <span className="relative z-10 text-white font-medium">Back to Home</span>
-          </Link>
-        </div>
+        {/* Project Modal */}
+        {selectedProject && (
+          <ProjectModal
+            isOpen={!!selectedProject}
+            onClose={() => setSelectedProject(null)}
+            title={selectedProject.title}
+            description={selectedProject.description}
+            image_url={selectedProject.image_url}
+            project_url={selectedProject.project_url}
+          />
+        )}
       </div>
-
-      {/* Project Modal */}
-      {selectedProject && (
-        <ProjectModal
-          isOpen={!!selectedProject}
-          onClose={() => setSelectedProject(null)}
-          title={selectedProject.title}
-          description={selectedProject.description}
-          image_url={selectedProject.image_url}
-          project_url={selectedProject.project_url}
-        />
-      )}
     </div>
   );
 };
