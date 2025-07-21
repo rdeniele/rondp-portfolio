@@ -54,14 +54,14 @@ const ProjectsPage = () => {
   const filteredProjects = projects.filter(project => getProjectCategory(project) === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-gray-900 text-white">
       {/* Header */}
       <div className="relative w-full h-72">
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900 to-purple-900 opacity-50" />
+        <div className="absolute inset-0 bg-gray-800" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center space-y-4">
-            <h1 className="text-4xl md:text-6xl font-bold">My Projects</h1>
-            <p className="text-lg text-gray-200 max-w-2xl mx-auto px-4">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white">My Projects</h1>
+            <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto px-4">
               A collection of my work across web development, AI/ML, and data science
             </p>
           </div>
@@ -76,26 +76,23 @@ const ProjectsPage = () => {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`group relative px-6 py-3 rounded-xl backdrop-blur-md border border-white/20 font-medium transition-all duration-300 overflow-hidden ${
+              className={`px-6 py-3 rounded-lg border font-medium transition-colors ${
                 selectedCategory === category
-                  ? 'bg-white/20 text-white'
-                  : 'bg-white/10 hover:bg-white/15 text-white'
+                  ? 'border-gray-600 bg-gray-800 text-white'
+                  : 'border-gray-700 bg-gray-800 text-gray-200 hover:border-gray-600'
               }`}
             >
-              <div className={`absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 transition-opacity duration-300 ${
-                selectedCategory === category ? 'opacity-100' : 'opacity-0 group-hover:opacity-50'
-              }`} />
-              <span className="relative z-10">{category}</span>
+              {category}
             </button>
           ))}
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="backdrop-blur-md bg-white/5 rounded-lg overflow-hidden border border-white/10 transform hover:scale-105 transition-all duration-300"
+              className="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 transition-all duration-300 hover:border-gray-600 hover:shadow-lg"
             >
               <div className="relative h-48">
                 <Image
@@ -107,36 +104,28 @@ const ProjectsPage = () => {
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
-                <p className="text-gray-300 mb-4 line-clamp-2">{project.description}</p>
+                <p className="text-gray-300 text-sm line-clamp-2 mb-4">{project.description}</p>
                 {project.technologies && project.technologies.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.slice(0, 3).map((tech) => (
-                      <span key={tech} className="px-2 py-1 text-sm rounded-md bg-white/10 text-white">
+                      <span key={tech} className="px-2 py-1 text-xs rounded-md bg-gray-700 text-gray-200">
                         {tech}
                       </span>
                     ))}
                   </div>
                 )}
-                                    <button
-                      onClick={() => setSelectedProject(project)}
-                      className="w-full group relative inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 overflow-hidden transition-all duration-300 hover:bg-white/20"
-                    >
-                      <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                      <span className="relative z-10 text-white font-medium mr-2 transform transition-transform duration-300 group-hover:translate-x-[-8px]">
-                        View Details
-                      </span>
-                      <svg 
-                        className="relative z-10 w-5 h-5 text-white transform transition-transform duration-300 group-hover:translate-x-2" 
-                        fill="none" 
-                        stroke="currentColor" 
-                        viewBox="0 0 24 24"
-                      >
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              ))}
+                <button
+                  onClick={() => setSelectedProject(project)}
+                  className="inline-flex items-center text-gray-300 hover:text-white text-sm font-medium transition-colors"
+                >
+                  <span>View Details</span>
+                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
 
         {/* Back to Home */}
