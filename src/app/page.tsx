@@ -7,25 +7,13 @@ import TypewriterText from '@/components/TypewriterText';
 import styles from './animations.module.css'
 import { FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa'
 import Image from 'next/image'
+import Link from 'next/link'
 import ProjectModal from '@/components/ProjectModal'
-import { projects } from '@/data/projects'
-
-interface Project {
-  id: number
-  title: string
-  description: string
-  project_url: string
-  image_url: string
-  created_at: string
-  technologies: string[]
-  order?: number
-}
+import { Project, projects } from '@/data/projects'
 
 export default function Home() {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [activeSection, setActiveSection] = useState('home');
   const [scrollProgress, setScrollProgress] = useState(0);
-  const carouselRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
@@ -70,30 +58,6 @@ export default function Home() {
     }
   };
 
-  const scrollToNext = () => {
-    if (currentIndex < projects.length - 1) {
-      setCurrentIndex(currentIndex + 1);
-    } else {
-      setCurrentIndex(0);
-    }
-  };
-
-  const scrollToPrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex(currentIndex - 1);
-    } else {
-      setCurrentIndex(projects.length - 1);
-    }
-  };
-
-  // Update the carousel track position when currentIndex changes
-  useEffect(() => {
-    if (carouselRef.current) {
-      const offset = currentIndex * -370; // 350px width + 20px gap
-      carouselRef.current.style.transform = `translateX(${offset}px)`;
-    }
-  }, [currentIndex]);
-
   return (
     <div className={styles.mainContainer}>
       {/* Background container */}
@@ -107,18 +71,22 @@ export default function Home() {
       </div>
 
       {/* Navigation */}
-      <nav className={styles.navContainer}>
+          <nav className={styles.navContainer}>
         <div className="max-w-7xl mx-auto px-4 sm:px-8">
           <div className="flex items-center justify-between h-16">
-            <div className="text-lg sm:text-xl font-semibold text-white">RP</div>
+            <Link href="/" className="text-lg sm:text-xl font-semibold text-white hover:text-indigo-400 transition-colors">
+              RP
+            </Link>
             <div className="flex gap-4 sm:gap-8">
-              {['home', 'projects', 'contact'].map((section) => (
+              {['projects', 'contact'].map((section) => (
                 <a
                   key={section}
-                  href={`#${section}`}
+                  href={section === 'projects' ? '/projects' : `#${section}`}
                   onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(section);
+                    if (section !== 'projects') {
+                      e.preventDefault();
+                      scrollToSection(section);
+                    }
                   }}
                   className={`text-sm sm:text-base text-white hover:text-indigo-400 transition-colors ${styles.navLink}`}
                 >
@@ -128,9 +96,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      </nav>
-
-      {/* Main content */}
+      </nav>      {/* Main content */}
       <main className={styles.snapContainer} ref={containerRef}>
         <div className={styles.scrollProgress} style={{ transform: `scaleX(${scrollProgress / 100})` }} />
         
@@ -160,7 +126,7 @@ export default function Home() {
                 Ron Paragoso
               </h2>
               <p className={`text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl ${styles.animateFadeIn}`}>
-                Philippines/US-based software engineer with hands-on experience in web development using Next.js, Laravel, ASP.NET, TypeScript, and machine learning.
+                Software engineer with hands-on experience in web development using Next.js, Laravel, ASP.NET, TypeScript, and machine learning.
               </p>
 
               {/* Social Media Links */}
@@ -200,110 +166,69 @@ export default function Home() {
         {/* Projects Section */}
         <section id="projects" className={`${styles.snapSection} ${styles.sectionTransition} ${activeSection === 'projects' ? styles.active : ''}`}>
           <div className="max-w-7xl mx-auto w-full px-4 sm:px-8 relative z-30">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white mb-6 sm:mb-8">Projects</h2>
+            <div className="flex justify-between items-center mb-8">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-semibold text-white">Featured Projects</h2>
+              <a
+                href="/projects"
+                className="group relative px-8 py-4 rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg hover:bg-white/20 transition-all duration-300 flex items-center gap-3 overflow-hidden"
+              >
+                <span className="relative z-10 text-white font-medium">View All Projects</span>
+                <div className="relative z-10 w-6 h-6 flex items-center justify-center">
+                  <svg className="w-5 h-5 text-white transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </div>
+                <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </a>
+            </div>
             
-            {/* Projects Carousel */}
-            <div className={styles.carouselContainer}>
-              <div className={styles.carouselTrack} ref={carouselRef}>
-                {projects.map((project, index) => (
-                  <div
-                    key={project.id}
-                    className={`${styles.carouselItem} ${
-                      index === currentIndex ? styles.active : ''
-                    }`}
-                  >
-                    <div className={styles.projectCard}>
-                      <div className={styles.projectImage}>
-                        <Image
-                          src={project.image_url}
-                          alt={project.title}
-                          fill
-                          className="object-cover"
-                        />
-                      </div>
-                      <div className={styles.projectContent}>
-                        <div>
-                          <h3 className={styles.projectTitle}>{project.title}</h3>
-                          <p className={styles.projectDescription}>{project.description}</p>
-                          {project.technologies && project.technologies.length > 0 && (
-                            <div className={styles.projectTechnologies}>
-                              {project.technologies.map((tech) => (
-                                <span key={tech} className={styles.technologyTag}>
-                                  {tech}
-                                </span>
-                              ))}
-                            </div>
-                          )}
-                        </div>
-                        <button
-                          className={styles.viewDetailsButton}
-                          onClick={() => setSelectedProject(project)}
-                        >
-                          View Details
-                        </button>
-                      </div>
-                    </div>
+            {/* Featured Projects Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {projects.slice(0, 3).map((project) => (
+                <div
+                  key={project.id}
+                  className="backdrop-blur-md bg-white/5 rounded-lg overflow-hidden border border-white/10 transform hover:scale-105 transition-all duration-300"
+                >
+                  <div className="relative h-48">
+                    <Image
+                      src={project.image_url}
+                      alt={project.title}
+                      fill
+                      className="object-cover"
+                    />
                   </div>
-                ))}
-              </div>
-
-              {/* Carousel Navigation */}
-              <div className={styles.carouselNavigation}>
-                <button
-                  onClick={scrollToPrev}
-                  className={styles.carouselButton}
-                  aria-label="Previous project"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M15.75 19.5L8.25 12l7.5-7.5"
-                    />
-                  </svg>
-                </button>
-                <button
-                  onClick={scrollToNext}
-                  className={styles.carouselButton}
-                  aria-label="Next project"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    strokeWidth={2}
-                    stroke="currentColor"
-                    className="w-6 h-6"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                    />
-                  </svg>
-                </button>
-              </div>
-
-              {/* Dots Indicator */}
-              <div className={styles.carouselDots}>
-                {projects.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`${styles.carouselDot} ${
-                      index === currentIndex ? styles.active : ''
-                    }`}
-                    aria-label={`Go to project ${index + 1}`}
-                  />
-                ))}
-              </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
+                    <p className="text-gray-300 mb-4 line-clamp-2">{project.description}</p>
+                    {project.technologies && project.technologies.length > 0 && (
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.technologies.slice(0, 3).map((tech) => (
+                          <span key={tech} className="px-2 py-1 text-sm rounded-md bg-white/10 text-white">
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                    <button
+                      onClick={() => setSelectedProject(project)}
+                      className="w-full group relative inline-flex items-center justify-center px-6 py-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 overflow-hidden transition-all duration-300 hover:bg-white/20"
+                    >
+                      <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <span className="relative z-10 text-white font-medium mr-2 transform transition-transform duration-300 group-hover:translate-x-[-8px]">
+                        View Details
+                      </span>
+                      <svg 
+                        className="relative z-10 w-5 h-5 text-white transform transition-transform duration-300 group-hover:translate-x-2" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </section>
@@ -317,6 +242,8 @@ export default function Home() {
             description={selectedProject.description}
             image_url={selectedProject.image_url} project_url={selectedProject.project_url}          />
         )}
+
+
 
         {/* Contact Section */}
         <section id="contact" className={`${styles.snapSection} ${styles.sectionTransition} ${activeSection === 'contact' ? styles.active : ''}`}>
