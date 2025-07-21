@@ -11,18 +11,18 @@ export default function Home() {
   const [showSocials, setShowSocials] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-[#23272f]">
       <div className="max-w-7xl mx-auto px-4 py-12 sm:px-6 lg:px-8">
         {/* Hero Section */}
-        <div className="text-center mb-16 border-2 border-gray-700 rounded-2xl p-10 bg-gray-900/80 relative">
+        <div className="text-center mb-16 border-2 border-gray-600 rounded-2xl p-10 bg-[#2d323b]/90 relative">
           <button
             onClick={() => setShowSocials((prev) => !prev)}
-            className="absolute -top-5 right-8 px-8 py-2 rounded-t-xl rounded-b-lg bg-gray-900 border-2 border-gray-700 text-gray-200 font-semibold shadow-md hover:bg-gray-800 hover:text-white transition-colors transition-transform hover:scale-105 z-20"
+            className="absolute -top-5 right-8 px-8 py-2 rounded-t-xl rounded-b-lg bg-[#23272f] border-2 border-gray-600 text-gray-200 font-semibold shadow-md hover:bg-[#23272f]/90 hover:text-white transition-colors transition-transform hover:scale-105 z-20"
             style={{boxShadow: '0 2px 8px 0 rgba(0,0,0,0.10)'}}
           >
             {showSocials ? 'Hide' : 'Connect'}
           </button>
-          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white mb-6">
+          <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-100 mb-6">
             Hi, I am Ron
           </h1>
           <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto mb-8 text-justify">
@@ -34,7 +34,7 @@ export default function Home() {
                 href="https://github.com/rdeniele"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-gray-700 hover:border-gray-600 bg-gray-800 text-gray-200 font-medium transition-colors transition-transform hover:scale-105"
+                className="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-gray-600 hover:border-gray-500 bg-[#23272f] text-gray-200 font-medium transition-colors transition-transform hover:scale-105"
               >
                 <FaGithub className="text-xl" />
                 <span>GitHub</span>
@@ -43,7 +43,7 @@ export default function Home() {
                 href="https://www.linkedin.com/in/ron-paragoso-a96b1724b/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-gray-700 hover:border-gray-600 bg-gray-800 text-gray-200 font-medium transition-colors transition-transform hover:scale-105"
+                className="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-gray-600 hover:border-gray-500 bg-[#23272f] text-gray-200 font-medium transition-colors transition-transform hover:scale-105"
               >
                 <FaLinkedin className="text-xl" />
                 <span>LinkedIn</span>
@@ -52,7 +52,7 @@ export default function Home() {
                 href="/resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-gray-700 hover:border-gray-600 bg-gray-800 text-gray-200 font-medium transition-colors transition-transform hover:scale-105"
+                className="flex-1 flex items-center justify-center gap-2 px-6 py-3 rounded-lg border border-gray-600 hover:border-gray-500 bg-[#23272f] text-gray-200 font-medium transition-colors transition-transform hover:scale-105"
               >
                 <FaFileAlt className="text-xl" />
                 <span>Resume</span>
@@ -64,10 +64,10 @@ export default function Home() {
         {/* Featured Projects Section */}
         <div className="space-y-8 mb-16">
           <div className="flex items-center justify-between">
-            <h2 className="text-3xl font-bold text-white">Featured Projects</h2>
+            <h2 className="text-3xl font-bold text-gray-100">Featured Projects</h2>
             <a
               href="/projects"
-              className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-700 hover:border-gray-600 bg-gray-800 text-gray-200 font-medium transition-colors"
+              className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-600 hover:border-gray-500 bg-[#2d323b] text-gray-200 font-medium transition-colors"
             >
               <span>View All</span>
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -79,7 +79,7 @@ export default function Home() {
             {projects.slice(0, 3).map((project) => (
               <div
                 key={project.id}
-                className="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 transition-all duration-300 hover:border-gray-600 hover:shadow-lg transition-transform hover:scale-105"
+                className="bg-[#2d323b] rounded-lg overflow-hidden border border-gray-600 transition-all duration-300 hover:border-gray-500 hover:shadow-lg transition-transform hover:scale-105"
               >
                 <div className="relative w-full h-48">
                   <Image
@@ -90,12 +90,12 @@ export default function Home() {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
+                  <h3 className="text-xl font-semibold text-gray-100 mb-2">{project.title}</h3>
                   <p className="text-gray-300 text-sm line-clamp-2 mb-4">{project.description}</p>
                   {project.technologies && project.technologies.length > 0 && (
                     <div className="flex flex-wrap gap-2 mb-4">
                       {project.technologies.slice(0, 3).map((tech) => (
-                        <span key={tech} className="px-2 py-1 text-xs rounded-md bg-gray-700 text-gray-200">
+                        <span key={tech} className="px-2 py-1 text-xs rounded-md bg-[#23272f] text-gray-200">
                           {tech}
                         </span>
                       ))}
@@ -103,7 +103,7 @@ export default function Home() {
                   )}
                   <button
                     onClick={() => setSelectedProject(project)}
-                    className="inline-flex items-center text-gray-300 hover:text-white text-sm font-medium transition-colors"
+                    className="inline-flex items-center text-gray-300 hover:text-gray-100 text-sm font-medium transition-colors"
                   >
                     <span>View Details</span>
                     <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

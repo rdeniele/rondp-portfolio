@@ -54,31 +54,31 @@ const ProjectsPage = () => {
   const filteredProjects = projects.filter(project => getProjectCategory(project) === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white">
+    <div className="min-h-screen bg-[#23272f] text-gray-100">
       {/* Back to Home - Top Left */}
       <div className="absolute top-8 left-8 z-20">
         <Link
           href="/"
-          className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-white/10 backdrop-blur-lg border border-white/20 shadow-lg hover:bg-white/20 transition-all duration-300 overflow-hidden hover:scale-105"
+          className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-[#2d323b]/80 border border-gray-600 shadow-lg hover:bg-[#23272f]/80 transition-all duration-300 overflow-hidden hover:scale-105"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           <svg 
-            className="relative z-10 w-5 h-5 text-white transform transition-transform duration-300 group-hover:-translate-x-1" 
+            className="relative z-10 w-5 h-5 text-gray-100 transform transition-transform duration-300 group-hover:-translate-x-1" 
             fill="none" 
             stroke="currentColor" 
             viewBox="0 0 24 24"
           >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 12H5m7 7l-7-7 7-7" />
           </svg>
-          <span className="relative z-10 text-white font-medium">Back to Home</span>
+          <span className="relative z-10 text-gray-100 font-medium">Back to Home</span>
         </Link>
       </div>
       {/* Header */}
       <div className="relative w-full h-72">
-        <div className="absolute inset-0 bg-gray-800" />
+        <div className="absolute inset-0 bg-[#2d323b]/90" />
         <div className="absolute inset-0 flex items-center justify-center">
           <div className="text-center space-y-4">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-white">My Projects</h1>
+            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-100">My Projects</h1>
             <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto px-4">
               A collection of my work across web development, AI/ML, and data science
             </p>
@@ -96,8 +96,8 @@ const ProjectsPage = () => {
               onClick={() => setSelectedCategory(category)}
               className={`px-6 py-3 rounded-lg border font-medium transition-colors hover:scale-105 ${
                 selectedCategory === category
-                  ? 'border-gray-600 bg-gray-800 text-white'
-                  : 'border-gray-700 bg-gray-800 text-gray-200 hover:border-gray-600'
+                  ? 'border-gray-600 bg-[#2d323b] text-gray-100'
+                  : 'border-gray-700 bg-[#23272f] text-gray-300 hover:border-gray-600'
               }`}
             >
               {category}
@@ -110,7 +110,7 @@ const ProjectsPage = () => {
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="bg-gray-800 rounded-lg overflow-hidden border border-gray-700 transition-all duration-300 hover:border-gray-600 hover:shadow-lg hover:scale-105"
+              className="bg-[#2d323b] rounded-lg overflow-hidden border border-gray-600 transition-all duration-300 hover:border-gray-500 hover:shadow-lg hover:scale-105"
             >
               <div className="relative h-48">
                 <Image
@@ -121,12 +121,12 @@ const ProjectsPage = () => {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-white mb-2">{project.title}</h3>
+                <h3 className="text-xl font-semibold text-gray-100 mb-2">{project.title}</h3>
                 <p className="text-gray-300 text-sm line-clamp-2 mb-4">{project.description}</p>
                 {project.technologies && project.technologies.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-4">
                     {project.technologies.slice(0, 3).map((tech) => (
-                      <span key={tech} className="px-2 py-1 text-xs rounded-md bg-gray-700 text-gray-200">
+                      <span key={tech} className="px-2 py-1 text-xs rounded-md bg-[#23272f] text-gray-200">
                         {tech}
                       </span>
                     ))}
@@ -134,7 +134,7 @@ const ProjectsPage = () => {
                 )}
                 <button
                   onClick={() => setSelectedProject(project)}
-                  className="inline-flex items-center text-gray-300 hover:text-white text-sm font-medium transition-colors"
+                  className="inline-flex items-center text-gray-300 hover:text-gray-100 text-sm font-medium transition-colors"
                 >
                   <span>View Details</span>
                   <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -149,7 +149,7 @@ const ProjectsPage = () => {
         {/* Project Modal */}
         {selectedProject && (
           <ProjectModal
-            isOpen={!!selectedProject}
+            isOpen={true}
             onClose={() => setSelectedProject(null)}
             title={selectedProject.title}
             description={selectedProject.description}
