@@ -32,7 +32,7 @@ export default function Hero() {
             alt="Hero Image" 
             width={250} 
             height={450} 
-            className="object-cover w-[200px] h-[300px] sm:w-[225px] sm:h-[350px] lg:w-[250px] lg:h-[400px] rounded-lg filter contrast-110 brightness-95 saturate-110" 
+            className="object-cover w-[200px] h-[450px] sm:w-[225px] sm:h-[350px] lg:w-[250px] lg:h-[400px] rounded-lg filter contrast-110 brightness-95 saturate-110" 
             style={{
               filter: 'contrast(1.1) brightness(0.95) saturate(1.1) sepia(0.1)'
             }}
@@ -87,8 +87,8 @@ export default function Hero() {
             </div>
 
             {/* Contact Button */}
-            <div className="mt-4 sm:mt-6 flex justify-center lg:justify-start">
-              <button className='px-4 py-2 sm:px-6 sm:py-3 bg-[#d9d6c5] text-[#1B181B] hover:text-white font-medium rounded-full hover:bg-gray-800 transition-colors'>
+            <div className="mt-2 sm:mt-6 flex justify-center lg:justify-start">
+              <button className='px-4 py-2 sm:px-6 sm:py-3 bg-[#d9d6c5] text-[#1B181B] hover:text-white font-medium rounded-full hover:bg-gray-800 transition-colors border border-gray-600 hover:border-gray-500'>
                 <a 
                   href="mailto:work.rparagoso@gmail.com"
                   className='transition-colors no-underline flex items-center'

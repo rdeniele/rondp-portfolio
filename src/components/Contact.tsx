@@ -4,7 +4,7 @@ import Image from 'next/image'
 function Contact() {
   return (
     <div className="flex flex-col space-y-4 sm:space-y-6 py-6 sm:py-8 mt-6 sm:mt-8 px-4 sm:px-6 lg:px-8">
-      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-black flex justify-center items-center text-center" id='contact'>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-[#1B181B] flex justify-center items-center text-center" id='contact'>
         Let&lsquo;s Build Something Great Together
       </h2>
       <p className="text-sm sm:text-base font-semibold text-gray-500 flex justify-center items-center text-center" id='contact'>
@@ -46,7 +46,7 @@ function Contact() {
         
         {/* Center - Contact Me button */}
         <div className="flex justify-center order-first lg:order-none">
-          <button className='px-4 py-2 sm:px-6 sm:py-3 bg-[#d9d6c5] text-black hover:text-white font-medium sm:font-bold text-sm sm:text-base rounded-full hover:bg-gray-800 transition-colors'>
+          <button className='px-4 py-2 sm:px-6 sm:py-3 bg-[#d9d6c5] text-[#1B181B] hover:text-white font-medium sm:font-bold text-sm sm:text-base rounded-full hover:bg-gray-800 transition-colors border border-gray-600 hover:border-gray-500'>
             <a 
               href="mailto:work.rparagoso@gmail.com"
               className='transition-colors no-underline flex items-center'
