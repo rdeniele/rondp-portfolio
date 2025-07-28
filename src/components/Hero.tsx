@@ -14,9 +14,19 @@ export default function Hero() {
       </div>
 
       {/* Content Section */}
-      <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 items-start sm:items-center lg:items-start">
+      <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 items-start sm:items-center lg:items-start relative">
+        {/* Noise overlay for this section */}
+        <div 
+          className="absolute inset-0 opacity-50 pointer-events-none rounded-lg"
+          style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.8' numOctaves='9' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter2)'/%3E%3C/svg%3E")`,
+            backgroundRepeat: 'repeat',
+            backgroundSize: '100px 100px'
+          }}
+        />
+        
         {/* Image */}
-        <div className="flex-shrink-0 w-full sm:w-auto flex justify-center lg:justify-start">
+        <div className="flex-shrink-0 w-full sm:w-auto flex justify-center lg:justify-start relative z-10">
           <Image 
             src="/images/hero-image.jpg" 
             alt="Hero Image" 
