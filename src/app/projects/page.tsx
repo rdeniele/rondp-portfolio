@@ -5,10 +5,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Project, projects } from '@/data/projects';
 import ProjectModal from '@/components/ProjectModal';
+import Nav from '@/components/Nav';
 
 // Define categories based on technologies
 const categories = [
-  'Web/Mobile Development',
+  'Web/Mobile Development', 
   'Design & Development',
   'AI/ML/Data Science'
 ];
@@ -54,111 +55,115 @@ const ProjectsPage = () => {
   const filteredProjects = projects.filter(project => getProjectCategory(project) === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-[#23272f] text-gray-100">
-      {/* Back to Home - Top Left */}
-      <div className="absolute top-8 left-8 z-20">
-        <Link
-          href="/"
-          className="group relative inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-[#2d323b]/80 border border-gray-600 shadow-lg hover:bg-[#23272f]/80 transition-all duration-300 overflow-hidden hover:scale-105"
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-          <svg 
-            className="relative z-10 w-5 h-5 text-gray-100 transform transition-transform duration-300 group-hover:-translate-x-1" 
-            fill="none" 
-            stroke="currentColor" 
-            viewBox="0 0 24 24"
+    <>
+      <Nav />
+      <div className="min-h-screen bg-[#191719] text-gray-100 pt-16 sm:pt-20">
+        {/* Back to Home - Top Left */}
+        <div className="absolute top-20 sm:top-24 left-4 sm:left-8 z-20">
+          <Link
+            href="/"
+            className="group relative inline-flex items-center gap-2 sm:gap-3 px-4 py-2 sm:px-8 sm:py-4 rounded-xl bg-[#2d323b]/80 border border-gray-600 shadow-lg hover:bg-[#23272f]/80 transition-all duration-300 overflow-hidden hover:scale-105"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 12H5m7 7l-7-7 7-7" />
-          </svg>
-          <span className="relative z-10 text-gray-100 font-medium">Back to Home</span>
-        </Link>
-      </div>
-      {/* Header */}
-      <div className="relative w-full h-72">
-        <div className="absolute inset-0 bg-[#2d323b]/90" />
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center space-y-4">
-            <h1 className="text-5xl sm:text-6xl md:text-7xl font-bold text-gray-100">My Projects</h1>
-            <p className="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto px-4">
-              A collection of my work across web development, AI/ML, and data science
-            </p>
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <svg
+              className="relative z-10 w-4 h-4 sm:w-5 sm:h-5 text-gray-100 transform transition-transform duration-300 group-hover:-translate-x-1"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 12H5m7 7l-7-7 7-7" />
+            </svg>
+            <span className="relative z-10 text-gray-100 font-medium text-sm sm:text-base">Back to Home</span>
+          </Link>
+        </div>
+
+        {/* Header */}
+        <div className="relative w-full h-64 sm:h-72 mt-16 sm:mt-20">
+          <div className="absolute inset-0 bg-[#2d323b]/90" />
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center space-y-3 sm:space-y-4 px-4">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-100">My Projects</h1>
+              <p className="text-lg sm:text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto">
+                A collection of my work across web development, AI/ML, and data science
+              </p>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Categories */}
-        <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category}
-              onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-3 rounded-lg border font-medium transition-colors hover:scale-105 ${
-                selectedCategory === category
-                  ? 'border-gray-600 bg-[#2d323b] text-gray-100'
-                  : 'border-gray-700 bg-[#23272f] text-gray-300 hover:border-gray-600'
-              }`}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
+        {/* Main Content */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+          {/* Categories */}
+          <div className="flex flex-wrap justify-center gap-2 sm:gap-4 mb-8 sm:mb-12">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setSelectedCategory(category)}
+                className={`px-3 py-2 sm:px-6 sm:py-3 rounded-lg border font-medium text-sm sm:text-base transition-colors hover:scale-105 ${
+                  selectedCategory === category
+                    ? 'border-gray-600 bg-[#2d323b] text-gray-100'
+                    : 'border-gray-700 bg-[#23272f] text-gray-300 hover:border-gray-600'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project) => (
-            <div
-              key={project.id}
-              className="bg-[#2d323b] rounded-lg overflow-hidden border border-gray-600 transition-all duration-300 hover:border-gray-500 hover:shadow-lg hover:scale-105"
-            >
-              <div className="relative h-48">
-                <Image
-                  src={project.image_url}
-                  alt={project.title}
-                  fill
-                  className="object-cover"
-                />
+          {/* Projects Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {filteredProjects.map((project) => (
+              <div
+                key={project.id}
+                className="bg-[#2d323b] rounded-lg overflow-hidden border border-gray-600 transition-all duration-300 hover:border-gray-500 hover:shadow-lg hover:scale-105"
+              >
+                <div className="relative h-40 sm:h-48">
+                  <Image
+                    src={project.image_url}
+                    alt={project.title}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <div className="p-4 sm:p-6">
+                  <h3 className="text-lg sm:text-xl font-semibold text-gray-100 mb-2">{project.title}</h3>
+                  <p className="text-gray-300 text-sm line-clamp-2 mb-3 sm:mb-4">{project.description}</p>
+                  {project.technologies && project.technologies.length > 0 && (
+                    <div className="flex flex-wrap gap-1 sm:gap-2 mb-3 sm:mb-4">
+                      {project.technologies.slice(0, 3).map((tech) => (
+                        <span key={tech} className="px-2 py-1 text-xs rounded-md bg-[#23272f] text-gray-200">
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+                  <button
+                    onClick={() => setSelectedProject(project)}
+                    className="inline-flex items-center text-gray-300 hover:text-gray-100 text-sm font-medium transition-colors"
+                  >
+                    <span>View Details</span>
+                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </button>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-100 mb-2">{project.title}</h3>
-                <p className="text-gray-300 text-sm line-clamp-2 mb-4">{project.description}</p>
-                {project.technologies && project.technologies.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.slice(0, 3).map((tech) => (
-                      <span key={tech} className="px-2 py-1 text-xs rounded-md bg-[#23272f] text-gray-200">
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
-                )}
-                <button
-                  onClick={() => setSelectedProject(project)}
-                  className="inline-flex items-center text-gray-300 hover:text-gray-100 text-sm font-medium transition-colors"
-                >
-                  <span>View Details</span>
-                  <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
 
-        {/* Project Modal */}
-        {selectedProject && (
-          <ProjectModal
-            isOpen={true}
-            onClose={() => setSelectedProject(null)}
-            title={selectedProject.title}
-            description={selectedProject.description}
-            image_url={selectedProject.image_url}
-            project_url={selectedProject.project_url}
-          />
-        )}
+          {/* Project Modal */}
+          {selectedProject && (
+            <ProjectModal
+              isOpen={true}
+              onClose={() => setSelectedProject(null)}
+              title={selectedProject.title}
+              description={selectedProject.description}
+              image_url={selectedProject.image_url}
+              project_url={selectedProject.project_url}
+            />
+          )}
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

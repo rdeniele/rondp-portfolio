@@ -1,10 +1,10 @@
-// Import the Inter font from Google Fonts via Next.js font optimization
-import { Inter } from 'next/font/google'
+// Import the Rubik font from Google Fonts via Next.js font optimization
+import { Rubik } from 'next/font/google'
 // Import global styles (applies to the whole app)
 import './globals.css'
 
 // Load the Inter font with the Latin character subset
-const inter = Inter({ subsets: ['latin'] })
+const rubik = Rubik({ subsets: ['latin'] })
 
 // Metadata for the HTML document (used by Next.js for SEO and browser tab info)
 export const metadata = {
@@ -22,8 +22,8 @@ export default function RootLayout({
     return (
         <html lang="en">  
       {/* Sets the language of the document */}
-      {/* Apply the Inter font globally by assigning its className to the body */}
-      <body className={inter.className}>
+      {/* Apply the Rubik font globally by assigning its className to the body */}
+      <body className={rubik.className}>
         {children} {/* Render the page-specific content inside the layout */}
         </body>
         </html>
