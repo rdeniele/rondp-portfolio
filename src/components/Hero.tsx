@@ -8,7 +8,7 @@ export default function Hero() {
     <div className="w-full flex flex-col px-4 sm:px-6 lg:px-8 py-8" id='about'>
       {/* Hero Title */}
       <div className="mb-6 sm:mb-8 overflow-hidden -mx-4">
-        <h1 className="text-[clamp(2.5rem,8vw,8rem)] sm:text-[clamp(3rem,8vw,8rem)] font-bold text-[#191719] w-full scale-x-110 sm:scale-x-120 transform scale-y-110 origin-left leading-none">
+        <h1 className="text-[clamp(2.5rem,8vw,8rem)] sm:text-[clamp(3rem,8vw,8rem)] font-bold text-[#1B181B] w-full scale-x-110 sm:scale-x-120 transform scale-y-110 origin-left leading-none">
           RON PARAGOSO
         </h1>
       </div>
@@ -42,7 +42,7 @@ export default function Hero() {
         {/* About Section */}
         <div className="flex-1 w-full">
           <div className="flex flex-col gap-4 sm:gap-6">
-            <h2 className="text-xl sm:text-2xl font-bold text-[#191719] uppercase tracking-wider text-center lg:text-left">
+            <h2 className="text-xl sm:text-2xl font-bold text-[#1B181B] uppercase tracking-wider text-center lg:text-left">
               About Me
             </h2>
             
@@ -88,7 +88,7 @@ export default function Hero() {
 
             {/* Contact Button */}
             <div className="mt-4 sm:mt-6 flex justify-center lg:justify-start">
-              <button className='px-4 py-2 sm:px-6 sm:py-3 bg-[#d9d6c5] text-black hover:text-white font-medium rounded-full hover:bg-gray-800 transition-colors'>
+              <button className='px-4 py-2 sm:px-6 sm:py-3 bg-[#d9d6c5] text-[#1B181B] hover:text-white font-medium rounded-full hover:bg-gray-800 transition-colors'>
                 <a 
                   href="mailto:work.rparagoso@gmail.com"
                   className='transition-colors no-underline flex items-center'
