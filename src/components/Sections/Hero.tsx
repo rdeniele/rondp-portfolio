@@ -8,7 +8,7 @@ export default function Hero() {
     <div className="w-full flex flex-col px-4 sm:px-6 lg:px-8 py-8" id='about'>
       {/* Hero Title */}
       <div className="mb-6 sm:mb-8 overflow-hidden -mx-4">
-        <h1 className="text-[clamp(2.5rem,8vw,8rem)] sm:text-[clamp(3rem,8vw,8rem)] font-bold text-[#1B181B] w-full scale-x-110 sm:scale-x-120 transform scale-y-110 origin-left leading-none">
+        <h1 className="text-[clamp(2.5rem,8vw,8rem)] sm:text-[clamp(3rem,8vw,8rem)] font-extrabold text-[#1B181B]">
           RON PARAGOSO
         </h1>
       </div>

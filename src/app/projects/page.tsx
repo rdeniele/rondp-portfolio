@@ -5,19 +5,32 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Project, projects } from '@/data/projects';
 import ProjectModal from '@/components/ProjectModal';
-import Nav from '@/components/Nav';
+import Nav from '@/components/Sections/Nav';
 
 // Define categories based on technologies
 const categories = [
   'Web/Mobile Development', 
   'Design & Development',
-  'AI/ML/Data Science'
+  'AI/ML/Data Science',
+  'Unity / Game Development'
 ];
 
 const getProjectCategory = (project: Project): string => {
   const techs = project.technologies.map(t => t.toLowerCase());
   
-  // Check for AI/ML/Data Science projects first
+  // Check for Unity / Game Development projects first
+  if (techs.some(t => 
+    t.includes('unity') || 
+    t.includes('c#') || 
+    t.includes('c++') ||
+    t.includes('godot') ||
+    t.includes('game development') ||
+    t.includes('game engine')
+  )) {
+    return 'Unity / Game Development';
+  }
+
+  // Check for AI/ML/Data Science projects
   if (techs.some(t => 
     t.includes('tensorflow') || 
     t.includes('scikit-learn') || 

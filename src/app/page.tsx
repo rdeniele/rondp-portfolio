@@ -3,11 +3,11 @@
 // import { useState } from 'react';
 // import { FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa'
 // import Link from 'next/dist/client/link';
-import Hero from '@/components/Hero';
-import Projects from '@/components/Projects';
-import Contact from '@/components/Contact';
-import Nav from '@/components/Nav';
-import Footer from '@/components/Footer';
+import Hero from '@/components/Sections/Hero';
+import Projects from '@/components/Sections/Projects';
+import Contact from '@/components/Sections/Contact';
+import Nav from '@/components/Sections/Nav';
+import Footer from '@/components/Sections/Footer';
 
 export default function Home() {
 

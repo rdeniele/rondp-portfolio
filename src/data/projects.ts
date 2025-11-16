@@ -194,5 +194,25 @@ export const projects: Project[] = [
     created_at: "2023-08-15",
     technologies: ["scikit-learn", "OpenCV", "Python"],
     order: 19
-  }
+  },
+  {
+    id: 20,
+    title: "Run Thru",
+    description: "2D Endless Runner game with hand-drawn art. A game where user plays as a fit girl dodging junk foods and only consuming healthy food.",
+    project_url: "https://github.com/rdeniele/run_thru",
+    image_url: "/images/runthru.png",
+    created_at: "2023-08-15",
+    technologies: ["Unity", "C#"],
+    order: 20
+  },
+  {
+    id: 21,
+    title: "Off-Course",
+    description: "3D Maze game with gyro controls. A game where user plays as a selected animal solving the maze, and dodging obstacles",
+    project_url: "https://www.canva.com/design/DAF2ASkuiVY/7JMIuE50rKzC4vFvCeSQTg/edit?utm_content=DAF2ASkuiVY&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton",
+    image_url: "/images/OFFCOURSE.png",
+    created_at: "2023-08-15",
+    technologies: ["Unity", "C#"],
+    order: 21
+  },
 ]; 
