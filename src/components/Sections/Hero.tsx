@@ -110,6 +110,17 @@ export default function Hero() {
                   </svg>
                 </a>
               </button>
+                {/* Creatives Portfolio CTA */}
+                <a
+                  href="https://ron-creatives.vercel.app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="ml-4"
+                >
+                  <button className='px-4 py-2 sm:px-6 sm:py-3 bg-[#191719] text-white font-medium rounded-full hover:bg-[#d9d6c5] hover:text-[#1B181B] transition-colors border border-gray-800 hover:border-gray-600'>
+                    View Creatives Portfolio
+                  </button>
+                </a>
             </div>
           </div>
         </div>
