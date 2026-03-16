@@ -1,90 +1,79 @@
-import React, { useState } from 'react'
-import { Project, projects } from '@/data/projects'
-import Image from 'next/image'
-import ProjectModal from '@/components/ProjectModal'
+"use client";
 
-function Projects() {
-    const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+import { motion } from "framer-motion";
+import { Parallax } from "react-scroll-parallax";
+import React, { useState } from "react";
+import { projects } from "@/data/projects";
+import Image from "next/image";
+import ProjectModal from "@/components/ProjectModal";
+
+export default function ProjectsSection() {
+  const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
   return (
-    <>
-      <div className="bg-[#1a1c22] py-8 sm:py-12 lg:py-16 relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen rounded-[2rem] sm:rounded-[3rem] lg:rounded-[4rem]" id='projects'>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header Section */}
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-6 sm:mb-8 lg:mb-10 gap-4">
-            <h2 className="text-3xl sm:text-4xl lg:text-6xl font-semibold text-gray-100 text-center sm:text-left">
-              Featured Projects 
-              <span className="text-gray-500 text-xl sm:text-2xl lg:text-6xl font-semibold block sm:inline"> (3)</span>
-            </h2>
-
-            {/* view all projects button */}
-            <a
-              href="/projects"
-              className="flex items-center justify-center gap-2 px-4 py-2 rounded-full border border-gray-600 hover:border-gray-500 bg-[#1a1c22] hover:bg-white hover:text-black text-gray-200 font-medium transition-colors text-sm sm:text-base"
-            >
-              <span>View All Projects</span>
-            </a>
-          </div>
-          
-          {/* Project showcase - alternating left/right layout */}
-          <div className="space-y-8 sm:space-y-10 lg:space-y-12 px-2 sm:px-4 lg:px-8">
-            {projects.slice(0, 3).map((project, index) => (
-              <div
+    <section id="projects" className="py-24 bg-white">
+      <Parallax speed={-5}>
+        <motion.div
+          className="max-w-6xl mx-auto px-6"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold mb-8 text-center"
+            style={{ fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif', color: '#000' }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            Featured Work
+          </motion.h2>
+          <div className="flex flex-col gap-8 mb-10 lg:grid lg:grid-cols-3">
+            {projects.slice(0, 3).map((project, idx) => (
+              <motion.button
                 key={project.id}
-                className={`flex flex-col lg:flex-row gap-6 sm:gap-8 items-center ${
-                  // This is the key: use modulo operator to alternate layout direction
-                  // index % 2 === 1 means odd-numbered projects (index 1, 3, 5...)
-                  // will have flex-row-reverse, making them appear right-to-left
-                  // Even-numbered projects (index 0, 2, 4...) use normal flex-row (left-to-right)
-                  index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-                }`}
+                type="button"
+                onClick={() => setSelectedProject(project)}
+                className="group block rounded-xl overflow-hidden border border-[#E5E5E5] bg-white transition-shadow hover:shadow-lg focus:outline-none"
+                style={{ textDecoration: 'none' }}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 + idx * 0.1, ease: "easeOut" }}
+                viewport={{ once: true }}
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
               >
-                {/* Project Image - always takes up half the width on large screens */}
-                <div className="flex-shrink-0 w-full lg:w-1/2">
-                  <div className="relative w-full h-48 sm:h-56 md:h-64 lg:h-80 cursor-pointer">
-                    <Image
-                      onClick={() => setSelectedProject(project)}
-                      src={project.image_url}
-                      alt={project.title}
-                      fill
-                      className="object-cover rounded-lg sm:rounded-xl lg:rounded-2xl hover:scale-105 transition-transform duration-300"
-                    />
+                <div className="aspect-[4/3] w-full bg-[#F5F5F5] overflow-hidden relative flex items-center justify-center">
+                  <Image
+                    src={project.image_url}
+                    alt={project.title}
+                    fill
+                    className="object-cover transition-transform duration-300 group-hover:scale-105"
+                    style={{ display: 'block' }}
+                  />
+                  <div className="absolute inset-0 bg-[#E5E5E5]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center">
+                    <span className="w-full text-center py-3 text-lg font-bold text-black bg-white/80" style={{ fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif' }}>{project.title}</span>
                   </div>
                 </div>
-
-                {/* Project Content - takes up the other half */}
-                <div className="flex-1 w-full lg:w-1/2">
-                  <div className="space-y-3 sm:space-y-4 text-center lg:text-left">
-                    {/* Large project number (01, 02, 03) */}
-                    <span className="text-5xl sm:text-6xl lg:text-9xl font-semibold text-gray-300 block">
-                      {/* padStart(2, '0') ensures numbers are always 2 digits with leading zero */}
-                      {String(index + 1).padStart(2, '0')}
-                    </span>
-                    
-                    <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-100">{project.title}</h3>
-                    
-                    <p className="text-gray-300 text-sm sm:text-base lg:text-lg leading-relaxed">
-                      {project.description}
-                    </p>
-                    
-                    {/* Technology tags */}
-                    {project.technologies && project.technologies.length > 0 && (
-                      <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
-                        {project.technologies.map((tech) => (
-                          <span key={tech} className="px-2 sm:px-3 py-1 text-xs sm:text-sm rounded-md bg-[#23272f] text-gray-200">
-                            {tech}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </div>
+              </motion.button>
             ))}
           </div>
-        </div>
-      </div>
-      
+          <div className="flex justify-center">
+            <motion.a
+              href="/projects"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-medium border border-black bg-white text-black transition-all duration-200 hover:bg-[#E5E5E5] group"
+              style={{ fontFamily: 'Poppins, Helvetica Neue, Arial, sans-serif', fontWeight: 500 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              See All Work
+            </motion.a>
+          </div>
+        </motion.div>
+      </Parallax>
+
       {selectedProject && (
         <ProjectModal
           isOpen={!!selectedProject}
@@ -95,8 +84,6 @@ function Projects() {
           project_url={selectedProject.project_url}
         />
       )}
-    </>
-  )
+    </section>
+  );
 }
-
-export default Projects

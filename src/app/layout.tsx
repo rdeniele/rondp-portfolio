@@ -1,31 +1,35 @@
-// Import the Rubik font from Google Fonts via Next.js font optimization
-import { Rubik } from 'next/font/google'
-// Import global styles (applies to the whole app)
-import './globals.css'
+import type { Metadata } from "next";
+import { Geist, Geist_Mono } from "next/font/google";
+import "./globals.css";
+import ParallaxLayout from "@/components/ParallaxLayout";
 
-// Load the Inter font with the Latin character subset
-const rubik = Rubik({ subsets: ['latin'] })
+const geistSans = Geist({
+  variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
 
-// Metadata for the HTML document (used by Next.js for SEO and browser tab info)
-export const metadata = {
-  title: 'Ron Paragoso', // Title shown in the browser tab
-  description: 'Software Engineer Portfolio', // Description for SEO and social previews
-}
+const geistMono = Geist_Mono({
+  variable: "--font-geist-mono",
+  subsets: ["latin"],
+});
 
-// Root layout for the entire application
-// This wraps around all pages and components
+export const metadata: Metadata = {
+  title: "Ron Deniele Paragoso Portfolio",
+  description: "Portfolio of Ron Deniele Paragoso",
+};
+
 export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
-    return (
-        <html lang="en">  
-      {/* Sets the language of the document */}
-      {/* Apply the Rubik font globally by assigning its className to the body */}
-      <body className={rubik.className}>
-        {children} {/* Render the page-specific content inside the layout */}
-        </body>
-        </html>
-  )
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <ParallaxLayout>
+          {children}
+        </ParallaxLayout>
+      </body>
+    </html>
+  );
 }

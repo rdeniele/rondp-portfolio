@@ -1,130 +1,110 @@
 "use client";
 
-import { FaGithub, FaLinkedin, FaFileAlt } from 'react-icons/fa';
-import Image from 'next/image'
+import { motion } from "framer-motion";
+import { Parallax } from "react-scroll-parallax";
+import Image from "next/image";
 
-export default function Hero() {
+export default function HeroSection() {
   return (
-    <div className="w-full flex flex-col px-4 sm:px-6 lg:px-8 py-8" id='about'>
-      {/* Hero Title */}
-      <div className="mb-6 sm:mb-8 overflow-hidden -mx-4">
-        <h1 className="text-[clamp(2.5rem,8vw,8rem)] sm:text-[clamp(3rem,8vw,8rem)] font-extrabold text-[#1B181B]">
-          RON PARAGOSO
-        </h1>
-      </div>
-
-      {/* Content Section */}
-      <div className="flex flex-col lg:flex-row gap-6 sm:gap-8 items-start sm:items-center lg:items-start">
-        
-        {/* Image */}
-        <div className="flex-shrink-0 w-full sm:w-auto flex justify-center lg:justify-start relative">
-          {/* Noise overlay for image only */}
-          <div 
-            className="absolute inset-0 opacity-30 pointer-events-none rounded-lg z-10"
-            style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter2'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3.5' numOctaves='10' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter2)'/%3E%3C/svg%3E")`,
-              backgroundRepeat: 'repeat',
-              backgroundSize: '80px 80px'
-            }}
-          />
-          <Image 
-            src="/images/hero-image.jpg" 
-            alt="Hero Image" 
-            width={250} 
-            height={450} 
-            className="object-cover w-[200px] h-[450px] sm:w-[225px] sm:h-[350px] lg:w-[250px] lg:h-[400px] rounded-lg filter contrast-110 brightness-95 saturate-110" 
-            style={{
-              filter: 'contrast(1.1) brightness(0.95) saturate(1.1) sepia(0.1)'
-            }}
-          />
-        </div>
-
-        {/* About Section */}
-        <div className="flex-1 w-full">
-          <div className="flex flex-col gap-4 sm:gap-6">
-            <h2 className="text-xl sm:text-2xl font-bold text-[#1B181B] uppercase tracking-wider text-center lg:text-left">
-              About Me
-            </h2>
-            
-            <div className="space-y-3 sm:space-y-4">
-              <p className="text-base sm:text-lg leading-relaxed text-gray-700 text-center lg:text-left">
-                A Computer Science graduate passionate about software development and digital problem-solving. I specialize in building clean, responsive, and user-focused websites using tools like HTML, CSS, JS, and Tailwind.
-              </p>
-              <p className="text-base sm:text-lg leading-relaxed text-gray-700 text-center lg:text-left">
-                I enjoy learning new technologies, working on real-world projects, and constantly improving my skills in back-end development. Whether collaborating with a team or working independently, I am committed to creating meaningful and efficient digital experiences.
-              </p>
-            </div>
-
-            {/* Social Links */}
-            <div className="flex gap-4 sm:gap-6 mt-4 sm:mt-6 justify-center lg:justify-start">
-              <a
-                href="https://github.com/rdeniele"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-[#191719] hover:text-[#4d4c4d] transition-colors duration-300"
-                aria-label="GitHub"
-              >
-                <FaGithub className="text-3xl sm:text-4xl" />
-              </a>
-              <a 
-                href="https://www.linkedin.com/in/ron-paragoso-a96b1724b/" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-[#191719] hover:text-[#4d4c4d] transition-colors duration-300"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedin className="text-3xl sm:text-4xl" />
-              </a>
-              <a 
-                href="/resume.pdf" 
-                target="_blank" 
-                rel="noopener noreferrer" 
-                className="text-[#191719] hover:text-[#4d4c4d] transition-colors duration-300"
-                aria-label="Resume"
-              >
-                <FaFileAlt className="text-3xl sm:text-4xl" />
-              </a>
-            </div>
-
-            {/* Contact Button */}
-            <div className="mt-2 sm:mt-6 flex justify-center lg:justify-start">
-              <button className='px-4 py-2 sm:px-6 sm:py-3 bg-[#d9d6c5] text-[#1B181B] hover:text-white font-medium rounded-full hover:bg-gray-800 transition-colors border border-gray-600 hover:border-gray-500'>
-                <a 
-                  href="mailto:work.rparagoso@gmail.com"
-                  className='transition-colors no-underline flex items-center'
-                >
-                  <span className="text-sm sm:text-base">Contact Me</span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="inline-block ml-2 w-4 h-4"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M17 7l-10 10m10-10H7m10 0v10"
-                    />
-                  </svg>
-                </a>
-              </button>
-                {/* Creatives Portfolio CTA */}
-                <a
-                  href="https://ron-creatives.vercel.app"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="ml-4"
-                >
-                  <button className='px-4 py-2 sm:px-6 sm:py-3 bg-[#191719] text-white font-medium rounded-full hover:bg-[#d9d6c5] hover:text-[#1B181B] transition-colors border border-gray-800 hover:border-gray-600'>
-                    View Creatives Portfolio
-                  </button>
-                </a>
-            </div>
+    <section className="min-h-[80vh] flex flex-col justify-center items-center bg-white px-6 text-center pt-28 md:pt-32 pb-40" id="hero">
+      <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-5xl mx-auto gap-8 md:gap-12">
+        <Parallax speed={-10} className="flex-shrink-0 flex justify-center md:justify-start w-full md:w-1/3 h-full mb-6 md:mb-0">
+          <motion.div
+            className="w-40 h-56 md:w-full md:h-[420px] max-w-xs md:max-w-none"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <Image
+              src="/images/ronpic4.png"
+              alt="Ron portrait"
+              fill
+              className="rounded-2xl object-cover shadow-lg border border-[#E5E5E5] bg-[#F5F5F5]"
+              style={{ aspectRatio: '3 / 4' }}
+            />
+          </motion.div>
+        </Parallax>
+        <motion.div
+          className="flex-1 flex flex-col items-center md:items-start text-center md:text-left"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          <motion.h1
+            className="text-4xl md:text-6xl font-bold mb-5 leading-tight tracking-tight"
+            style={{ fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif', color: '#111', letterSpacing: '-0.03em' }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            Full-Stack Developer & <br className="hidden md:inline" /> Digital Problem Solver
+          </motion.h1>
+          <motion.p
+            className="text-base md:text-xl mb-10 max-w-xl mx-auto md:mx-0 text-[#555] font-normal"
+            style={{ fontFamily: 'Inter, Helvetica Neue, Arial, sans-serif' }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.4, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            I help transform ideas into clean, responsive, and user-focused web experiences using modern technologies.
+          </motion.p>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start items-center md:items-start w-full">
+            <motion.a
+              href="#projects"
+              className="w-full sm:w-auto px-7 py-2.5 rounded-full font-medium border border-[#222] bg-white text-[#111] hover:bg-[#F5F5F5] transition-colors duration-150 text-base md:text-lg shadow-sm"
+              style={{ fontFamily: 'Poppins, Helvetica Neue, Arial, sans-serif' }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              See My Work
+            </motion.a>
+            <motion.a
+              href="#contact"
+              className="w-full sm:w-auto px-7 py-2.5 rounded-full font-medium border border-[#222] bg-[#111] text-white hover:bg-[#222] transition-colors duration-150 text-base md:text-lg shadow-sm"
+              style={{ fontFamily: 'Poppins, Helvetica Neue, Arial, sans-serif' }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
+            >
+              Contact Me
+            </motion.a>
           </div>
-        </div>
+          {/* Social Icons below buttons */}
+          <div className="flex flex-row gap-5 justify-center md:justify-start items-center mt-5">
+            <a
+              href="https://www.linkedin.com/in/ron-paragoso-a96b1724b/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              className="hover:opacity-80 transition-opacity"
+              style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+            >
+              {/* LinkedIn SVG: full circle */}
+              <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="19" cy="19" r="19" fill="#0077B5"/>
+                <path d="M26.5 26.5h-4.1v-6.7c0-1.6-.03-3.7-2.25-3.7-2.25 0-2.6 1.76-2.6 3.58v6.82H13.5V15.5h3.93v1.5h.06c.55-.93 1.8-1.9 3.7-1.9 3.96 0 4.7 2.6 4.7 5.98V26.5zM11.5 13.5a2.1 2.1 0 1 1 0-4.2 2.1 2.1 0 0 1 0 4.2zM13.5 26.5h-4V15.5h4v11z" fill="white"/>
+              </svg>
+            </a>
+            <a
+              href="https://github.com/rdeniele"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="hover:opacity-80 transition-opacity"
+              style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+            >
+              {/* GitHub SVG: full circle */}
+              <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="19" cy="19" r="19" fill="#222"/>
+                <path d="M19 10c-5.1 0-9.2 4.1-9.2 9.2 0 4.1 2.7 7.6 6.5 8.7.5.1.7-.2.7-.5v-1.8c-2.6.6-3.1-1.1-3.1-1.1-.4-1-1-1.4-1-1.4-.8-.7.1-.7.1-.7 1 .1 1.4 1 1.4 1 .9 1.4 2.2 1 2.7.8.1-.7.3-1 .5-1.2-2.1-.2-4.3-1.1-4.3-4.5 0-1 .3-1.7.8-2.3-.1-.2-.4-1.1.1-2.2 0 0 .8-.2 2.3.8.7-.2 1.6-.3 2.3-.3.7 0 1.6.1 2.3.3 1.5-1 2.3-.8 2.3-.8.5 1.1.2 2 .1 2.2.5.6.8 1.3.8 2.3 0 3.4-2.2 4.3-4.3 4.5.3.3.5.7.5 1.5v2c0 .3.2.6.7.5 3.8-1.1 6.5-4.6 6.5-8.7C28.2 14.1 24.1 10 19 10z" fill="white"/>
+              </svg>
+            </a>
+          </div>
+        </motion.div>
       </div>
-    </div>
-  )
+    </section>
+  );
 }

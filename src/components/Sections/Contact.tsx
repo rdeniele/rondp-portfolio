@@ -1,80 +1,87 @@
-import React from 'react'
-import Image from 'next/image'
+"use client";
 
-function Contact() {
+import { motion } from "framer-motion";
+import { Parallax } from "react-scroll-parallax";
+import React from "react";
+
+export default function ContactSection() {
   return (
-    <div className="flex flex-col space-y-4 sm:space-y-6 py-6 sm:py-8 mt-6 sm:mt-8 px-4 sm:px-6 lg:px-8">
-      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-[#1B181B] flex justify-center items-center text-center" id='contact'>
-        Let&lsquo;s Build Something Great Together
-      </h2>
-      <p className="text-sm sm:text-base font-semibold text-gray-500 flex justify-center items-center text-center" id='contact'>
-        Ready to bring your ideas to life? I&apos;m just a message away
-      </p>
-      
-      {/* contact links */}
-      <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-0">
-        {/* Left side - Contact info */}
-        <div className='flex flex-col sm:flex-row gap-4 sm:gap-5 items-center justify-center'>
-          <div className="flex-shrink-0">
-            <Image
-              src="/images/hero-image.jpg"
-              alt="Hero Image"
-              width={80}
-              height={80}
-              className="rounded-full object-cover w-16 h-16 sm:w-20 sm:h-20"
+    <section id="contact" className="py-24 bg-white">
+      <Parallax speed={-2}>
+        <motion.div
+          className="max-w-2xl mx-auto px-6"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut" }}
+          viewport={{ once: true }}
+        >
+          <motion.h2
+            className="text-3xl md:text-4xl font-bold mb-8 text-center"
+            style={{ fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif', color: '#000' }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            Contact
+          </motion.h2>
+          <motion.form
+            className="flex flex-col gap-6 mb-10"
+            onSubmit={e => { e.preventDefault(); alert('Message sent!'); }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
+            viewport={{ once: true }}
+          >
+            <input
+              type="text"
+              name="name"
+              placeholder="Your Name"
+              required
+              className="px-5 py-3 rounded-lg border border-[#E5E5E5] bg-white text-black placeholder-[#A3A3A3] focus:outline-none focus:border-black transition"
+              style={{ fontFamily: 'Inter, Helvetica Neue, Arial, sans-serif', fontWeight: 400 }}
             />
-          </div>
-         
-          <div className='flex flex-col text-center sm:text-left'>
-            <h3 className="text-base sm:text-lg font-bold text-gray-800 mb-2">
-              For More Inquiries
-            </h3>
-            <a 
-              href="mailto:work.rparagoso@gmail.com"
-              className='text-sm sm:text-base text-gray-600 hover:text-gray-800 transition-colors no-underline'
+            <input
+              type="email"
+              name="email"
+              placeholder="Your Email"
+              required
+              className="px-5 py-3 rounded-lg border border-[#E5E5E5] bg-white text-black placeholder-[#A3A3A3] focus:outline-none focus:border-black transition"
+              style={{ fontFamily: 'Inter, Helvetica Neue, Arial, sans-serif', fontWeight: 400 }}
+            />
+            <textarea
+              name="message"
+              placeholder="Your Message"
+              required
+              rows={5}
+              className="px-5 py-3 rounded-lg border border-[#E5E5E5] bg-white text-black placeholder-[#A3A3A3] focus:outline-none focus:border-black transition"
+              style={{ fontFamily: 'Inter, Helvetica Neue, Arial, sans-serif', fontWeight: 400 }}
+            />
+            <motion.button
+              type="submit"
+              className="w-full md:w-auto px-8 py-3 rounded-full font-medium border border-black bg-black text-white transition-all duration-200 hover:bg-[#1A1A1A]"
+              style={{ fontFamily: 'Poppins, Helvetica Neue, Arial, sans-serif', fontWeight: 500 }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
             >
+              Send Message
+            </motion.button>
+          </motion.form>
+          <div className="flex flex-col md:flex-row justify-center items-center gap-6 text-center">
+            <a href="mailto:work.rparagoso@gmail.com" className="underline text-black text-base hover:text-[#1A1A1A] transition" style={{ fontFamily: 'Inter, Helvetica Neue, Arial, sans-serif' }}>
               work.rparagoso@gmail.com
             </a>
-            <a 
-              href="tel:+639159427791"
-              className='text-sm sm:text-base text-gray-600 hover:text-gray-800 transition-colors no-underline'
-            >
-              +639159427791
+            <span className="hidden md:inline-block text-[#E5E5E5]">|</span>
+            <a href="https://www.linkedin.com/in/ron-paragoso-a96b1724b/" target="_blank" rel="noopener noreferrer" className="underline text-black text-base hover:text-[#1A1A1A] transition" style={{ fontFamily: 'Inter, Helvetica Neue, Arial, sans-serif' }}>
+              LinkedIn
+            </a>
+            <span className="hidden md:inline-block text-[#E5E5E5]">|</span>
+            <a href="https://github.com/rdeniele" target="_blank" rel="noopener noreferrer" className="underline text-black text-base hover:text-[#1A1A1A] transition" style={{ fontFamily: 'Inter, Helvetica Neue, Arial, sans-serif' }}>
+              GitHub
             </a>
           </div>
-        </div>
-        
-        {/* Center - Contact Me button */}
-        <div className="flex justify-center order-first lg:order-none">
-          <button className='px-4 py-2 sm:px-6 sm:py-3 bg-[#d9d6c5] text-[#1B181B] hover:text-white font-medium sm:font-bold text-sm sm:text-base rounded-full hover:bg-gray-800 transition-colors border border-gray-600 hover:border-gray-500'>
-            <a 
-              href="mailto:work.rparagoso@gmail.com"
-              className='transition-colors no-underline flex items-center'
-            >
-              <span>Contact Me</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="inline-block ml-2 w-4 h-4 sm:w-5 sm:h-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 7l-10 10m10-10H7m10 0v10"
-                />
-              </svg>
-            </a>
-          </button>
-        </div>
-        
-        {/* Right side - Empty div for balance (hidden on mobile) */}
-        <div className="hidden lg:block w-[200px]"></div>
-      </div>
-    </div>
-  )
+        </motion.div>
+      </Parallax>
+    </section>
+  );
 }
-
-export default Contact
