@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 
 const navLinks = [
-  { href: "#hero", label: "Home" },
+  { href: "/", label: "Home" },
   { href: "#projects", label: "Projects" },
   { href: "#about", label: "About" },
   { href: "#contact", label: "Contact" },
@@ -23,11 +23,7 @@ export default function Navbar() {
         transition={{ duration: 0.7, ease: "easeOut" }}
       >
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center gap-2 text-2xl font-bold text-black dark:text-white" style={{ fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif', letterSpacing: '-0.02em' }}>
-            Ron Paragoso
-          </Link>
-          
-          {/* Desktop nav */}
+          {/* Desktop nav - Left side */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <motion.a
@@ -42,6 +38,15 @@ export default function Navbar() {
               </motion.a>
             ))}
           </div>
+
+          {/* Center icon */}
+          <Link href="/" className="absolute left-1/2 transform -translate-x-1/2 flex items-center gap-2" aria-label="Home">
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-black dark:text-white">
+              <path d="M12 4C10.5 4 9.5 4.5 8.5 5.5C7.5 4.5 6.5 4 5 4C3 4 2 5.5 2 7C2 8 2.5 8.5 3 9L12 18L21 9C21.5 8.5 22 8 22 7C22 5.5 21 4 19 4C17.5 4 16.5 4.5 15.5 5.5C14.5 4.5 13.5 4 12 4Z" fill="currentColor"/>
+              <ellipse cx="8" cy="9" rx="1" ry="1.5" fill="white"/>
+              <ellipse cx="16" cy="9" rx="1" ry="1.5" fill="white"/>
+            </svg>
+          </Link>
           
           {/* Burger menu button for mobile */}
           <button
@@ -57,6 +62,7 @@ export default function Navbar() {
             </svg>
           </button>
           
+          {/* CTA button - Right side */}
           <motion.a
             href="#contact"
             className="hidden md:inline-block px-6 py-2 rounded-full text-sm font-medium border border-black dark:border-white bg-black dark:bg-white text-white dark:text-black transition-all duration-200 hover:bg-[#1A1A1A] dark:hover:bg-gray-200"
