@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <section className="min-h-[80vh] flex flex-col justify-center items-center bg-white px-6 text-center pt-28 md:pt-32 pb-40" id="hero">
+    <section className="min-h-[80vh] flex flex-col justify-center items-center bg-white dark:bg-gray-900 px-6 text-center pt-28 md:pt-32 pb-40" id="hero">
       <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-5xl mx-auto gap-8 md:gap-12">
         <Parallax speed={-10} className="flex-shrink-0 flex justify-center md:justify-start w-full md:w-1/3 h-full mb-6 md:mb-0">
           <motion.div
@@ -20,7 +20,7 @@ export default function HeroSection() {
               src="/images/ronpic4.png"
               alt="Ron portrait"
               fill
-              className="rounded-2xl object-cover shadow-lg border border-[#E5E5E5] bg-[#F5F5F5]"
+              className="rounded-2xl object-cover shadow-lg border border-[#E5E5E5] dark:border-gray-700 bg-[#F5F5F5] dark:bg-gray-800"
               style={{ aspectRatio: '3 / 4' }}
             />
           </motion.div>
@@ -33,8 +33,8 @@ export default function HeroSection() {
           viewport={{ once: true }}
         >
           <motion.h1
-            className="text-4xl md:text-6xl font-bold mb-5 leading-tight tracking-tight"
-            style={{ fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif', color: '#111', letterSpacing: '-0.03em' }}
+            className="text-4xl md:text-6xl font-bold mb-5 leading-tight tracking-tight text-[#111] dark:text-white"
+            style={{ fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif', letterSpacing: '-0.03em' }}
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3, ease: "easeOut" }}
@@ -43,7 +43,7 @@ export default function HeroSection() {
             Full-Stack Developer & <br className="hidden md:inline" /> Digital Problem Solver
           </motion.h1>
           <motion.p
-            className="text-base md:text-xl mb-10 max-w-xl mx-auto md:mx-0 text-[#555] font-normal"
+            className="text-base md:text-xl mb-10 max-w-xl mx-auto md:mx-0 text-[#555] dark:text-gray-400 font-normal"
             style={{ fontFamily: 'Inter, Helvetica Neue, Arial, sans-serif' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -55,7 +55,7 @@ export default function HeroSection() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start items-center md:items-start w-full">
             <motion.a
               href="#projects"
-              className="w-full sm:w-auto px-7 py-2.5 rounded-full font-medium border border-[#222] bg-white text-[#111] hover:bg-[#F5F5F5] transition-colors duration-150 text-base md:text-lg shadow-sm"
+              className="w-full sm:w-auto px-7 py-2.5 rounded-full font-medium border border-[#222] dark:border-gray-300 bg-white dark:bg-gray-800 text-[#111] dark:text-white hover:bg-[#F5F5F5] dark:hover:bg-gray-700 transition-colors duration-150 text-base md:text-lg shadow-sm"
               style={{ fontFamily: 'Poppins, Helvetica Neue, Arial, sans-serif' }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
@@ -64,7 +64,7 @@ export default function HeroSection() {
             </motion.a>
             <motion.a
               href="#contact"
-              className="w-full sm:w-auto px-7 py-2.5 rounded-full font-medium border border-[#222] bg-[#111] text-white hover:bg-[#222] transition-colors duration-150 text-base md:text-lg shadow-sm"
+              className="w-full sm:w-auto px-7 py-2.5 rounded-full font-medium border border-[#222] dark:border-white bg-[#111] dark:bg-white text-white dark:text-black hover:bg-[#222] dark:hover:bg-gray-200 transition-colors duration-150 text-base md:text-lg shadow-sm"
               style={{ fontFamily: 'Poppins, Helvetica Neue, Arial, sans-serif' }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}

@@ -71,7 +71,7 @@ const ProjectsPage = () => {
   const filteredProjects = projects.filter(project => getProjectCategory(project) === selectedCategory);
 
   return (
-    <div className="bg-white min-h-screen w-full font-sans text-black">
+    <div className="bg-white dark:bg-gray-900 min-h-screen w-full font-sans text-black dark:text-white">
       <Nav />
       
       <main className="pt-24 pb-16">
@@ -79,7 +79,7 @@ const ProjectsPage = () => {
         <div className="max-w-7xl mx-auto px-6 mb-8">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-black hover:text-gray-600 transition-colors group"
+            className="inline-flex items-center gap-2 text-black dark:text-gray-300 hover:text-gray-600 dark:hover:text-white transition-colors group"
           >
             <svg
               className="w-5 h-5 transform transition-transform duration-300 group-hover:-translate-x-1"
@@ -102,8 +102,8 @@ const ProjectsPage = () => {
             transition={{ duration: 0.7, ease: "easeOut" }}
           >
             <motion.h1
-              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-center"
-              style={{ fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif', color: '#000' }}
+              className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-center text-black dark:text-white"
+              style={{ fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
@@ -111,7 +111,7 @@ const ProjectsPage = () => {
               My Projects
             </motion.h1>
             <motion.p
-              className="text-lg md:text-xl text-center text-[#555] max-w-3xl mx-auto"
+              className="text-lg md:text-xl text-center text-[#555] dark:text-gray-400 max-w-3xl mx-auto"
               style={{ fontFamily: 'Inter, Helvetica Neue, Arial, sans-serif' }}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -136,8 +136,8 @@ const ProjectsPage = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-3 rounded-full font-medium border transition-all duration-200 ${
                   selectedCategory === category
-                    ? 'border-black bg-black text-white'
-                    : 'border-[#E5E5E5] bg-white text-black hover:bg-[#F5F5F5]'
+                    ? 'border-black dark:border-white bg-black dark:bg-white text-white dark:text-black'
+                    : 'border-[#E5E5E5] dark:border-gray-700 bg-white dark:bg-gray-800 text-black dark:text-white hover:bg-[#F5F5F5] dark:hover:bg-gray-700'
                 }`}
                 style={{ fontFamily: 'Poppins, Helvetica Neue, Arial, sans-serif', fontWeight: 500 }}
                 initial={{ opacity: 0, y: 20 }}
@@ -160,14 +160,14 @@ const ProjectsPage = () => {
                 key={project.id}
                 type="button"
                 onClick={() => setSelectedProject(project)}
-                className="group block rounded-xl overflow-hidden border border-[#E5E5E5] bg-white transition-shadow hover:shadow-lg focus:outline-none text-left"
+                className="group block rounded-xl overflow-hidden border border-[#E5E5E5] dark:border-gray-700 bg-white dark:bg-gray-800 transition-shadow hover:shadow-lg focus:outline-none text-left"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.6 + idx * 0.1, ease: "easeOut" }}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <div className="aspect-[4/3] w-full bg-[#F5F5F5] overflow-hidden relative">
+                <div className="aspect-[4/3] w-full bg-[#F5F5F5] dark:bg-gray-700 overflow-hidden relative">
                   <Image
                     src={project.image_url}
                     alt={project.title}
@@ -176,21 +176,21 @@ const ProjectsPage = () => {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2" style={{ fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif', color: '#000' }}>
+                  <h3 className="text-xl font-bold mb-2 text-black dark:text-white" style={{ fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif' }}>
                     {project.title}
                   </h3>
-                  <p className="text-sm text-[#555] mb-4 line-clamp-2" style={{ fontFamily: 'Inter, Helvetica Neue, Arial, sans-serif' }}>
+                  <p className="text-sm text-[#555] dark:text-gray-400 mb-4 line-clamp-2" style={{ fontFamily: 'Inter, Helvetica Neue, Arial, sans-serif' }}>
                     {project.description}
                   </p>
                   {project.technologies && project.technologies.length > 0 && (
                     <div className="flex flex-wrap gap-2">
                       {project.technologies.slice(0, 3).map((tech) => (
-                        <span key={tech} className="px-3 py-1 text-xs rounded-full bg-[#F5F5F5] text-[#555]" style={{ fontFamily: 'Inter, Helvetica Neue, Arial, sans-serif' }}>
+                        <span key={tech} className="px-3 py-1 text-xs rounded-full bg-[#F5F5F5] dark:bg-gray-700 text-[#555] dark:text-gray-300" style={{ fontFamily: 'Inter, Helvetica Neue, Arial, sans-serif' }}>
                           {tech}
                         </span>
                       ))}
                       {project.technologies.length > 3 && (
-                        <span className="px-3 py-1 text-xs rounded-full bg-[#F5F5F5] text-[#555]" style={{ fontFamily: 'Inter, Helvetica Neue, Arial, sans-serif' }}>
+                        <span className="px-3 py-1 text-xs rounded-full bg-[#F5F5F5] dark:bg-gray-700 text-[#555] dark:text-gray-300" style={{ fontFamily: 'Inter, Helvetica Neue, Arial, sans-serif' }}>
                           +{project.technologies.length - 3}
                         </span>
                       )}

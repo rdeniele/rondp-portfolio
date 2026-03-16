@@ -5,7 +5,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="py-8 px-6 border-t border-[#E5E5E5] bg-white">
+    <footer className="py-8 px-6 border-t border-[#E5E5E5] dark:border-gray-700 bg-white dark:bg-gray-900">
       <motion.div
         className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4"
         initial={{ opacity: 0, y: 30 }}
@@ -14,8 +14,8 @@ export default function Footer() {
         viewport={{ once: true }}
       >
         <motion.p
-          className="text-sm"
-          style={{ color: '#A3A3A3', fontFamily: 'Inter, Helvetica Neue, Arial, sans-serif' }}
+          className="text-sm text-[#A3A3A3] dark:text-gray-500"
+          style={{ fontFamily: 'Inter, Helvetica Neue, Arial, sans-serif' }}
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
@@ -26,7 +26,7 @@ export default function Footer() {
         <div className="flex items-center gap-6">
           <motion.a
             href="mailto:work.rparagoso@gmail.com"
-            className="transition-colors hover:text-black text-[#A3A3A3]"
+            className="transition-colors hover:text-black dark:hover:text-white text-[#A3A3A3] dark:text-gray-500"
             aria-label="Email"
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.97 }}
@@ -37,7 +37,7 @@ export default function Footer() {
             href="https://www.linkedin.com/in/ron-paragoso-a96b1724b/"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors hover:text-black text-[#A3A3A3]"
+            className="transition-colors hover:text-black dark:hover:text-white text-[#A3A3A3] dark:text-gray-500"
             aria-label="LinkedIn"
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.97 }}
@@ -48,7 +48,7 @@ export default function Footer() {
             href="https://github.com/rdeniele"
             target="_blank"
             rel="noopener noreferrer"
-            className="transition-colors hover:text-black text-[#A3A3A3]"
+            className="transition-colors hover:text-black dark:hover:text-white text-[#A3A3A3] dark:text-gray-500"
             aria-label="GitHub"
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.97 }}

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function AboutSection() {
   return (
-    <section id="about" className="py-24 bg-white">
+    <section id="about" className="py-24 bg-white dark:bg-gray-900">
       <Parallax speed={-3}>
         <motion.div
           className="max-w-4xl mx-auto px-6 flex flex-col items-center text-center"
@@ -16,8 +16,8 @@ export default function AboutSection() {
           viewport={{ once: true }}
         >
           <motion.h2
-            className="text-3xl md:text-4xl font-bold mb-6"
-            style={{ fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif', color: '#000' }}
+            className="text-3xl md:text-4xl font-bold mb-6 text-black dark:text-white"
+            style={{ fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: 'easeOut' }}
@@ -27,7 +27,7 @@ export default function AboutSection() {
           </motion.h2>
           
           <motion.p
-            className="text-lg md:text-xl text-[#555] mb-8 max-w-2xl"
+            className="text-lg md:text-xl text-[#555] dark:text-gray-400 mb-8 max-w-2xl"
             style={{ fontFamily: 'Inter, Helvetica Neue, Arial, sans-serif' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -45,7 +45,7 @@ export default function AboutSection() {
           >
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-medium border border-black bg-white text-black transition-all duration-200 hover:bg-[#E5E5E5] group"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-medium border border-black dark:border-white bg-white dark:bg-gray-800 text-black dark:text-white transition-all duration-200 hover:bg-[#E5E5E5] dark:hover:bg-gray-700 group"
               style={{ fontFamily: 'Poppins, Helvetica Neue, Arial, sans-serif', fontWeight: 500 }}
             >
               <span>Learn More About Me</span>

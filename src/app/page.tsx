@@ -9,14 +9,14 @@ import Footer from '@/components/Sections/Footer';
 
 export default function Home() {
   return (
-    <div className="bg-white min-h-screen w-full font-sans text-black">
+    <div className="bg-white dark:bg-gray-900 min-h-screen w-full font-sans text-black dark:text-white">
       <Nav />
       <main className="flex flex-col gap-0">
         {/* Hero */}
         <Hero />
 
         {/* Featured Work */}
-        <section id="projects" className="bg-white">
+        <section id="projects" className="bg-white dark:bg-gray-900">
           <Projects />
         </section>
 
@@ -24,7 +24,7 @@ export default function Home() {
         <About />
 
         {/* Contact */}
-        <section id="contact" className="bg-white">
+        <section id="contact" className="bg-white dark:bg-gray-900">
           <Contact />
         </section>
       </main>

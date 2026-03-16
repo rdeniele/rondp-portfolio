@@ -11,7 +11,7 @@ export default function ProjectsSection() {
   const [selectedProject, setSelectedProject] = useState<typeof projects[0] | null>(null);
 
   return (
-    <section id="projects" className="py-24 bg-white">
+    <section id="projects" className="py-24 bg-white dark:bg-gray-900">
       <Parallax speed={-5}>
         <motion.div
           className="max-w-6xl mx-auto px-6"
@@ -21,8 +21,8 @@ export default function ProjectsSection() {
           viewport={{ once: true }}
         >
           <motion.h2
-            className="text-3xl md:text-4xl font-bold mb-8 text-center"
-            style={{ fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif', color: '#000' }}
+            className="text-3xl md:text-4xl font-bold mb-8 text-center text-black dark:text-white"
+            style={{ fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif' }}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
@@ -36,7 +36,7 @@ export default function ProjectsSection() {
                 key={project.id}
                 type="button"
                 onClick={() => setSelectedProject(project)}
-                className="group block rounded-xl overflow-hidden border border-[#E5E5E5] bg-white transition-shadow hover:shadow-lg focus:outline-none"
+                className="group block rounded-xl overflow-hidden border border-[#E5E5E5] dark:border-gray-700 bg-white dark:bg-gray-800 transition-shadow hover:shadow-lg focus:outline-none"
                 style={{ textDecoration: 'none' }}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -45,7 +45,7 @@ export default function ProjectsSection() {
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
               >
-                <div className="aspect-[4/3] w-full bg-[#F5F5F5] overflow-hidden relative flex items-center justify-center">
+                <div className="aspect-[4/3] w-full bg-[#F5F5F5] dark:bg-gray-700 overflow-hidden relative flex items-center justify-center">
                   <Image
                     src={project.image_url}
                     alt={project.title}
@@ -53,8 +53,8 @@ export default function ProjectsSection() {
                     className="object-cover transition-transform duration-300 group-hover:scale-105"
                     style={{ display: 'block' }}
                   />
-                  <div className="absolute inset-0 bg-[#E5E5E5]/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center">
-                    <span className="w-full text-center py-3 text-lg font-bold text-black bg-white/80" style={{ fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif' }}>{project.title}</span>
+                  <div className="absolute inset-0 bg-[#E5E5E5]/60 dark:bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center">
+                    <span className="w-full text-center py-3 text-lg font-bold text-black dark:text-white bg-white/80 dark:bg-gray-800/80" style={{ fontFamily: 'Montserrat, Helvetica Neue, Arial, sans-serif' }}>{project.title}</span>
                   </div>
                 </div>
               </motion.button>
@@ -63,7 +63,7 @@ export default function ProjectsSection() {
           <div className="flex justify-center">
             <motion.a
               href="/projects"
-              className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-medium border border-black bg-white text-black transition-all duration-200 hover:bg-[#E5E5E5] group"
+              className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-medium border border-black dark:border-white bg-white dark:bg-gray-800 text-black dark:text-white transition-all duration-200 hover:bg-[#E5E5E5] dark:hover:bg-gray-700 group"
               style={{ fontFamily: 'Poppins, Helvetica Neue, Arial, sans-serif', fontWeight: 500 }}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.97 }}
