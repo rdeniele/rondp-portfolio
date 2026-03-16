@@ -2,5 +2,9 @@
 import { ParallaxProvider } from 'react-scroll-parallax';
 
 export default function ParallaxLayout({ children }: { children: React.ReactNode }) {
-  return <ParallaxProvider>{children}</ParallaxProvider>;
+  return (
+    <ParallaxProvider scrollAxis="vertical">
+      {children}
+    </ParallaxProvider>
+  );
 }
